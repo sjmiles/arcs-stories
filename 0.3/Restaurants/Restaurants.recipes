@@ -9,11 +9,18 @@ import 'FindRestaurants.manifest'
 import 'RestaurantMasterDetail.manifest'
 import 'RestaurantList.manifest'
 import 'RestaurantDetail.manifest'
+import '../Places/ExtractLocation.manifest'
 
 recipe
+  use #user as person
+  create as location
   create as selected
   create #restaurants #nosync as restaurants
+  ExtractLocation
+    person <- person
+    location -> location
   FindRestaurants
+    location <- location
     restaurants = restaurants
   RestaurantMasterDetail
     list <- restaurants

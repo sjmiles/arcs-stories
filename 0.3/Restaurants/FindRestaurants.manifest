@@ -6,12 +6,13 @@
 # subject to an additional IP rights grant found at
 # http://polymer.github.io/PATENTS.txt
 
+import 'https://$cdn/artifacts/Things/GeoCoordinates.schema'
 import 'Restaurant.schema'
 
 particle FindRestaurants in 'source/FindRestaurants.js'
-  FindRestaurants(inout [Restaurant] restaurants)
+  FindRestaurants(in GeoCoordinates location, inout [Restaurant] restaurants)
   affordance dom
   consume root
     provide masterdetail
       view restaurants
-  description `find restaurants in San Francisco`
+  description `find restaurants near ${location.name}`

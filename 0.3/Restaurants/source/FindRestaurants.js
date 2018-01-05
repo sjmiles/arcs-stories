@@ -29,15 +29,14 @@ defineParticle(({DomParticle, resolver}) => {
       return template;
     }
     _willReceiveProps(props, state) {
-      if (props.restaurants && !state.count) {
-        this._fetchPlaces();
+      if (props.restaurants && props.location && !state.count) {
+        this._fetchPlaces(props.location);
       }
     }
-    _fetchPlaces() {
+    _fetchPlaces(location) {
       this._setState({count: -1});
-      //let loc = `55.6711876,12.4537421`;
-      //let loc = `55.6786282,12.3155385`;
-      let loc = `37.7610927,-122.4208173`;
+      let loc = location ? `${location.latitude},${location.longitude}`
+          : `37.7610927,-122.4208173`; // Using San Francisco as a fallback.
       let radius = `1000`;
       let type = `restaurant`;
       fetch(`${placesService}?location=${loc}&radius=${radius}&type=${type}`)

@@ -14,8 +14,8 @@ defineParticle(({DomParticle}) => {
       if (props.person && props.person.name && props.person.location
           && JSON.stringify(props.person.location) !==
           JSON.stringify(lastProps.person && lastProps.person.location)) {
-        let {latitude, longitude} = props.person.location;
-        let location = this._views.get('location');
+        const {latitude, longitude} = props.person.location;
+        const location = this._views.get('location');
         location.set(new location.entityClass(
           {latitude, longitude, name: `${props.person.name}'s location`}));
       }

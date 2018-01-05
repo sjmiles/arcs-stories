@@ -6,19 +6,24 @@
 // subject to an additional IP rights grant found at
 // http://polymer.github.io/PATENTS.txt
 
-"use strict";
+'use strict';
 
-defineParticle(({DomParticle}) => {
+defineParticle(({ DomParticle }) => {
+  const host = 'arcs-list';
 
-  let host = 'arcs-list';
+  const html = (strings, ...values) =>
+    (strings[0] + values.map((v, i) => v + strings[i + 1]).join('')).trim();
 
-  const html = (strings, ...values) => (strings[0]  + values.map((v, i) => v + strings[i+1]).join('')).trim();
+  const info = console.log.bind(
+    console.log,
+    '%cLauncher',
+    `background: #008081; color: white; padding: 1px 6px 2px 7px; border-radius: 6px;`
+  );
 
-  let style = html`
+  const style = html`
 <style>
   [${host}] .material-icons {
     font-family: 'Material Icons';
-    /*font-size: 24px;*/
     font-style: normal;
     -webkit-font-feature-settings: 'liga';
     -webkit-font-smoothing: antialiased;
@@ -90,7 +95,7 @@ ${style}
     <div icon style%="{{iconStyle}}">
       <span delete style="visibility: hidden;">x</span>
       <a href="{{href}}" target="_blank"><i class="material-icons">{{icon}}</i><a>
-      <span delete on-click="_onDelete" key="{{index}}">x</span>
+      <span delete hidden="{{disallowDelete}}" on-click="_onDelete" key="{{arcId}}">x</span>
     </div>
     <a href="{{href}}" target="_blank"><div description title="{{description}}" unsafe-html="{{blurb}}"></div></a>
   </div>
@@ -99,7 +104,7 @@ ${style}
 <template arc-list-item>
   <div arc-list-item>
     <span description title="{{description}}" style="flex: 1;"><a href="{{href}}" target="_blank" unsafe-html="{{description}}"></a></span>
-    <span delete on-click="_onDelete" key="{{index}}" style="padding: 0 8px">x</span>
+    <span delete hidden="{{disallowDelete}}" on-click="_onDelete" key="{{arcId}}" style="padding: 0 8px">x</span>
     <div icon style%="{{iconStyle}}">
       <a href="{{href}}" target="_blank"><i class="material-icons">{{icon}}</i><a>
     </div>
@@ -112,13 +117,19 @@ ${style}
       return template;
     }
     _willReceiveProps(props) {
-      let items = [], profileItems = [];
+      let items = [],
+        profileItems = [];
       props.arcs.forEach((a, i) => {
         // each item goes in either the `items` or `profileItems` list
         let list = a.profile ? profileItems : items;
-        let blurb = a.description.length > 70 ? a.description.slice(0, 70) + '...' : a.description;
+        let blurb =
+          a.description.length > 70
+            ? a.description.slice(0, 70) + '...'
+            : a.description;
         list.push({
-          index: i,
+          arcId: a.id,
+          // Don't allow deleting the 'New Arc' arc.
+          disallowDelete: i == 0,
           href: a.href,
           blurb,
           description: a.description,
@@ -128,7 +139,7 @@ ${style}
           }
         });
       });
-      this._setState({items, profileItems});
+      this._setState({ items, profileItems });
     }
     _shouldRender(props, state) {
       return Boolean(state.items);
@@ -150,10 +161,14 @@ ${style}
       };
     }
     _onDelete(e) {
-      if (e.data.key > 0) {
-        this._views.get('arcs').remove(this._props.arcs[e.data.key]);
+      const arcId = e.data.key;
+      const arc = this._props.arcs.find(a => a.id === arcId);
+      if (!arc) {
+        info(`Couldn't find arc to delete [arcId=${arcId}].`);
+        return;
       }
+      info(`Removing arc [arcId=${arcId}].`);
+      this._views.get('arcs').remove(arc);
     }
   };
-
 });

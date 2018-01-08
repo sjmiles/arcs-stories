@@ -20,7 +20,7 @@ schema PlaidTransaction
     Text metaLocationZip
     Number metaLocationCoordinatesLat
     Number metaLocationCoordinatesLon
-    Boolean pending
+    Text pending
     Text typePrimary
     Text category0
     Text category1

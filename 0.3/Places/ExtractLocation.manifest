@@ -12,3 +12,4 @@ import 'https://$cdn/artifacts/Things/GeoCoordinates.schema'
 particle ExtractLocation in 'source/ExtractLocation.js'
   ExtractLocation(in Person person, out GeoCoordinates location)
   description `extract ${person}'s location`
+    location `${person}'s location`

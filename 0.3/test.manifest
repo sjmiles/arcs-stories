@@ -5,11 +5,11 @@
 # subject to an additional IP rights grant found at
 # http://polymer.github.io/PATENTS.txt
 
-import 'People/People.recipes'
-import 'Places/Places.recipes'
+import 'https://$cdn/artifacts/People/People.recipes'
+import 'https://$cdn/artifacts/Places/Places.recipes'
 import 'Products/Products.recipes'
-import 'Restaurants/Restaurants.recipes'
-import 'Events/Events.recipes'
+import 'https://$cdn/artifacts/Restaurants/Restaurants.recipes'
+import 'https://$cdn/artifacts/Events/Events.recipes'
 import 'Messages/Messages.recipes'
 
 import 'Finance/Finance.recipes'

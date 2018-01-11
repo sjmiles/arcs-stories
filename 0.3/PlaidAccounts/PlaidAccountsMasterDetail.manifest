@@ -8,7 +8,7 @@
 
 import 'PlaidAccount.schema'
 
-particle PlaidAccountsMasterDetail in '../Things/source/MasterDetail.js'
+particle PlaidAccountsMasterDetail in 'https://$cdn/artifacts/Things/source/MasterDetail.js'
   PlaidAccountsMasterDetail(inout PlaidAccount selected)
   consume root
     provide master

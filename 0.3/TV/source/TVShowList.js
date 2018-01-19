@@ -1,5 +1,3 @@
-http://api.tvmaze.com/search/shows?q=star+trek+discovery
-
 // @license
 // Copyright (c) 2017 Google Inc. All rights reserved.
 // This code may only be used under the BSD style license found at
@@ -14,19 +12,26 @@ defineParticle(({DomParticle, resolver}) => {
 
   let host = `show-list`;
 
-  let showTemplate = `
-<div style="display: flex; align-items: start; padding-bottom: 8px;">
-  <img src="{{src}}" style="vertical-align: middle; padding-right: 8px;">
-  <div unsafe-html="{{desc}}"></div>
-</div>
-  `.trim();
-
-  let template = `
+  const template = `
+<style>
+  [${host}] [shows] p {
+    margin: 0;
+  }
+</style>
 <div ${host} style="padding: 8px;">
-  <template shows>${showTemplate}</template>
-  <div>{{shows}}</div>
+  <template shows>
+    <div style="display: flex; align-items: start; padding-bottom: 8px;">
+     <img src="{{image}}" style="vertical-align: middle; padding-right: 8px;">
+      <div>
+        <div unsafe-html="{{description}}"></div>
+        <br>
+        <div><b>{{network}}</b> <span>{{day}}</span> <span>{{time}}</span></div>
+      </div>
+    </div>
+  </template>
+  <div shows>{{shows}}</div>
   <hr>
-  <pre>{{json}}</pre>
+  <!--<pre>{{json}}</pre>-->
 </div>
     `.trim();
 
@@ -43,8 +48,11 @@ defineParticle(({DomParticle, resolver}) => {
           $template: 'shows',
           models: props.shows.map(show => {
             return {
-              src: show.image,
-              desc: show.description
+              image: show.image,
+              description: show.description,
+              network: show.network,
+              day: `${show.day}s`,
+              time: show.time
             };
           })
         }

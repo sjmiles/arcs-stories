@@ -6,14 +6,25 @@
 # subject to an additional IP rights grant found at
 # http://polymer.github.io/PATENTS.txt
 
+import 'TVShow.schema'
+view DefaultShows of [TVShow] #showlist in 'empty.json'
+
 import 'FindTVShows.manifest'
-import 'ShowList.manifest'
+import 'TVShowList.manifest'
+import 'TVShowList2.manifest'
+import '../Layout/VerticalLayout.manifest'
 
 recipe
+  copy #showlist as showlist
+  create as selecteda
   create #shows #nosync as shows
-  create as selected
+  create as selectedb
+  VerticalLayout
+  TVShowList
+    shows <- showlist
+    selected = selecteda
   FindTVShows
     shows = shows
-  ShowList
+  TVShowList2
     shows <- shows
-    selected = selected
+    selected = selectedb

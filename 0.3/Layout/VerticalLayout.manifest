@@ -6,8 +6,10 @@
 # subject to an additional IP rights grant found at
 # http://polymer.github.io/PATENTS.txt
 
-import 'Show.schema'
-
-particle ShowList in 'source/ShowList.js'
-  ShowList(in [Show] shows, inout Show selected)
+particle VerticalLayout in 'source/VerticalLayout.js'
+  VerticalLayout()
   consume root
+    provide vertical_a
+    provide vertical_b
+    provide vertical_c
+    provide vertical_d

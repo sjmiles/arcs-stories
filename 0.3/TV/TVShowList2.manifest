@@ -8,7 +8,6 @@
 
 import 'TVShow.schema'
 
-particle FindTVShows in 'source/FindTVShows.js'
-  FindTVShows(inout [TVShow] shows)
-  consume vertical_b
-  description `find TV shows`
+particle TVShowList2 in 'source/TVShowList.js'
+  TVShowList2(in [TVShow] shows, inout TVShow selected)
+  consume vertical_c

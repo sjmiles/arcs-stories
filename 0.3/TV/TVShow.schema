@@ -6,7 +6,10 @@
 # subject to an additional IP rights grant found at
 # http://polymer.github.io/PATENTS.txt
 
-schema Show
- normative
+schema TVShow
+ optional
     Text description
     Text image
+    Text network
+    Text day
+    Text time

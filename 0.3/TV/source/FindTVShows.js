@@ -17,10 +17,12 @@ defineParticle(({DomParticle, resolver}) => {
   let host = "find-tv-shows";
 
   let template = `
+
   <div ${host} style="padding: 8px;">
     <input style="padding: 4px;" placeholder="TV Search" on-change="_onInput">
   </div>
-      `.trim();
+
+  `.trim();
 
   return class extends DomParticle {
     get template() {
@@ -41,6 +43,7 @@ defineParticle(({DomParticle, resolver}) => {
       this._receiveShows(shows);
     }
     async _receiveShows(shows) {
+      console.log('TVShows', shows);
       let showsView = this._views.get('shows');
       // clear old data
       let entities = await showsView.toList();
@@ -51,7 +54,10 @@ defineParticle(({DomParticle, resolver}) => {
         show = show.show;
         let entity = new Show({
           description: show.summary,
-          image: show.image && show.image.medium || ''
+          image: show.image && show.image.medium || '',
+          network: show.network && show.network.name || show.webChannel && show.webChannel.name || '',
+          day: show.schedule && show.schedule.days && show.schedule.days.shift() || '',
+          time: show.schedule && show.schedule.time
         });
         showsView.store(entity);
       });

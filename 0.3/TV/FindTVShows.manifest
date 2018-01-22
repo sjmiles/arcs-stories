@@ -6,7 +6,7 @@
 # subject to an additional IP rights grant found at
 # http://polymer.github.io/PATENTS.txt
 
-import 'TVShow.schema'
+import 'data/TVShow.schema'
 
 particle FindTVShows in 'source/FindTVShows.js'
   FindTVShows(inout [TVShow] shows)

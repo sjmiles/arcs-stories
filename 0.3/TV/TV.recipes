@@ -6,13 +6,14 @@
 # subject to an additional IP rights grant found at
 # http://polymer.github.io/PATENTS.txt
 
-import 'TVShow.schema'
-view DefaultShows of [TVShow] #showlist in 'empty.json'
+import 'data/TVShow.schema'
+view DefaultShows of [TVShow] #showlist in 'data/empty.json'
 
+import '../Layout/VerticalLayout.manifest'
 import 'FindTVShows.manifest'
 import 'TVShowList.manifest'
 import 'TVShowList2.manifest'
-import '../Layout/VerticalLayout.manifest'
+import 'TVShowActionBar.manifest'
 
 recipe
   copy #showlist as showlist
@@ -28,3 +29,5 @@ recipe
   TVShowList2
     shows <- shows
     selected = selectedb
+  TVShowActionBar
+    show <- selectedb

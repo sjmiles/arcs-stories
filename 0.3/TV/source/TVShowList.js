@@ -31,6 +31,7 @@ defineParticle(({DomParticle, resolver}) => {
   </template>
   <div shows>{{shows}}</div>
   <hr>
+    <div slotid="action"></div>
   <!--<pre>{{json}}</pre>-->
 </div>
     `.trim();

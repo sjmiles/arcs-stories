@@ -16,7 +16,7 @@ import 'ComposeMessage.manifest'
 recipe
   create #chat as messages
   map #friends_avatar as avatars
-  use #user as user
+  map #user as user
   ChatWrapper
     messages <- messages
     avatars <- avatars

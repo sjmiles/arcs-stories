@@ -6,8 +6,9 @@
 # subject to an additional IP rights grant found at
 # http://polymer.github.io/PATENTS.txt
 
-import 'TVShow.schema'
+import 'data/TVShow.schema'
 
 particle TVShowList2 in 'source/TVShowList.js'
   TVShowList2(in [TVShow] shows, inout TVShow selected)
   consume vertical_c
+    provide action

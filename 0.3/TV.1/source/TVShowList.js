@@ -19,18 +19,10 @@ defineParticle(({DomParticle, resolver}) => {
   }
 </style>
 <div ${host} style="padding: 8px;">
-  <template shows>
-    <div style="display: flex; align-items: start; padding-bottom: 8px;">
-     <img src="{{image}}" style="vertical-align: middle; padding-right: 8px;">
-      <div>
-        <div unsafe-html="{{description}}"></div>
-        <br>
-        <div><b>{{network}}</b> <span>{{day}}</span> <span>{{time}}</span></div>
-      </div>
-    </div>
-    <div slotid="action" subid="foo"></div>
+  <template items>
+    <div slotid="show" subid$="{{id}}"></div>
   </template>
-  <div shows>{{shows}}</div>
+  <div items>{{items}}</div>
   <hr>
 </div>
     `.trim();
@@ -40,19 +32,15 @@ defineParticle(({DomParticle, resolver}) => {
       return template;
     }
     _shouldRender(props) {
-      return props.shows;
+      return Boolean(props.shows);
     }
-    _render(props, state) {
+    _render({shows}) {
       return {
-        shows: {
-          $template: 'shows',
-          models: props.shows.map(show => {
+        items: {
+          $template: 'items',
+          models: shows.map(show => {
             return {
-              image: show.image,
-              description: show.description,
-              network: show.network,
-              day: `${show.day}s`,
-              time: show.time
+              id: show.id
             };
           })
         }

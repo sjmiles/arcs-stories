@@ -8,5 +8,6 @@
 
 import 'data/TVShow.schema'
 
-particle TVShowActionBar in 'source/TVShowActionBar.js'
-  TVShowActionBar(in TVShow show)
+particle TVShowPanel in 'source/TVShowPanel.js'
+  TVShowPanel(in TVShow show)
+  consume show

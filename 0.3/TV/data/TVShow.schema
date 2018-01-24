@@ -13,3 +13,4 @@ schema TVShow
     Text network
     Text day
     Text time
+    Boolean favorite

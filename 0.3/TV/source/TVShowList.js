@@ -28,11 +28,10 @@ defineParticle(({DomParticle, resolver}) => {
         <div><b>{{network}}</b> <span>{{day}}</span> <span>{{time}}</span></div>
       </div>
     </div>
+    <div slotid="action" subid="foo"></div>
   </template>
   <div shows>{{shows}}</div>
   <hr>
-    <div slotid="action"></div>
-  <!--<pre>{{json}}</pre>-->
 </div>
     `.trim();
 

@@ -7,13 +7,33 @@
 # http://polymer.github.io/PATENTS.txt
 
 import 'data/TVShow.schema'
-view DefaultShows of [TVShow] #showlist in 'data/empty.json'
+view DefaultShows of [TVShow] #showlist in 'data/shows.json'
 
 import '../Layout/VerticalLayout.manifest'
 import 'FindTVShows.manifest'
 import 'TVShowList.manifest'
 import 'TVShowList2.manifest'
 import 'TVShowActionBar.manifest'
+
+# concretize list particles
+# (requires item implementation in Polymorph/orts/TVShow.js)
+particle List in '../Polymorph/source/List.js'
+  List(in [TVShow] items, inout [TVShow] favorites)
+  consume root
+    provide set of action
+
+particle List2 in '../Polymorph/source/List.js'
+  List2(in [TVShow] items)
+  consume root
+
+recipe
+  create #favorites as favorites
+  copy #showlist as showlist
+  List
+    items <- showlist
+    favorites = favorites
+  List2
+    items <- favorites
 
 recipe
   copy #showlist as showlist

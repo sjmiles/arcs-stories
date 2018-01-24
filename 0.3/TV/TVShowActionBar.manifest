@@ -10,4 +10,3 @@ import 'data/TVShow.schema'
 
 particle TVShowActionBar in 'source/TVShowActionBar.js'
   TVShowActionBar(in TVShow show)
-  consume action

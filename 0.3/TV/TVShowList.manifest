@@ -11,4 +11,3 @@ import 'data/TVShow.schema'
 particle TVShowList in 'source/TVShowList.js'
   TVShowList(in [TVShow] shows, inout TVShow selected)
   consume vertical_a
-    provide set of action

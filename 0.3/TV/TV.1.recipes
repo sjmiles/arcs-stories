@@ -7,54 +7,61 @@
 # http://polymer.github.io/PATENTS.txt
 
 import 'data/TVShow.schema'
+import '../Layout/VerticalLayout.manifest'
+import 'FindTVShows.manifest'
+import 'TVShowActionBar.manifest'
 
-import 'http://localhost/projects/arcs/arc-stories/0.3/TV/TVShowActionBar.manifest'
+import 'data/TVShow.schema'
 
 shape HostedParticleShape
   HostedParticleShape(in TVShow)
   consume action
 
-particle TVShowMultiplexer in 'https://$cdn/artifacts/Arcs/source/Multiplexer.js'
+particle TVShowMultiplexer in 'https://$cdn/Arcs/source/Multiplexer.js'
   TVShowMultiplexer(host HostedParticleShape hostedParticle, in [TVShow] list)
   consume set of action
   description `${hostedParticle} for ${list}`
 
 particle TVShowList in 'source/TVShowList.js'
   TVShowList(in [TVShow] shows, inout TVShow selected)
-  consume root
+  consume vertical_a
     provide set of action
-  description `showy shows`
+
+particle TVShowList2 in 'source/TVShowList.js'
+  TVShowList2(in [TVShow] shows, inout TVShow selected)
+  consume vertical_c
+    provide set of action
 
 view DefaultShows of [TVShow] #showlist in 'data/empty.json'
 
-# concretize list particles
-# (requires item implementation in Polymorph/orts/TVShow.js)
-particle List in '../Polymorph/source/List.js'
-  List(in [TVShow] items, inout [TVShow] favorites)
-  consume root
-    provide set of action
-
-particle List2 in '../Polymorph/source/List.js'
-  List2(in [TVShow] items)
-  consume root
-
 recipe
-  create #favorites as favorites
-  copy #showlist as showlist
-  List
-    items <- showlist
-    favorites = favorites
-  List2
-    items <- favorites
+  copy #showlist as shows
+  create as selecteda
+  create #shows #nosync as results
+  create as selectedb
+  VerticalLayout
+  TVShowList
+    shows <- shows
+    selected = selecteda
+  FindTVShows
+    shows = results
+  TVShowList2
+    shows <- results
+    selected = selectedb
+    consume vertical_c
+      provide action as slot1
+  TVShowMultiplexer
+    list <- results
+    hostedParticle = TVShowActionBar
+    consume action as slot1
 
 recipe
   copy #showlist as shows
-  create as selected
-  slot as slot0
+  create as selecteda
   TVShowList
     shows <- shows
-    selected = selected
-    consume root as slot0
+    selected = selecteda
+    consume root
       provide action as slot1
   TVShowMultiplexer
     list <- shows

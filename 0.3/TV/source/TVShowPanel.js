@@ -26,7 +26,7 @@ defineParticle(({DomParticle, resolver}) => {
     <div><b>{{network}}</b> <span>{{day}}</span> <span>{{time}}</span></div>
   </div>
 </div>
-<div slotid="action" subid$="{{id}}"></div>
+<!--<div slotid="action" subid$="{{id}}"></div>-->
     `.trim();
 
   return class extends DomParticle {

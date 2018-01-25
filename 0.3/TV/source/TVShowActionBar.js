@@ -11,7 +11,7 @@
 defineParticle(({DomParticle}) => {
 
   const template = `
-    <div style="padding: 8px;">
+    <div style="padding: 8px; background-color: whitesmoke; margin: 8px 0;">
       <i class="material-icons">favorite_border</i>
       <i class="material-icons">share</i>
       <i class="material-icons">playlist_play</i>

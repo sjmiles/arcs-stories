@@ -5,9 +5,20 @@
   "network": "Epix",
   "time": "21:00"
 },{
-  "day": "Sunday",
-  "description": "<p><b>Berlin Station</b> is a contemporary spy series that follows Daniel Miller, an undercover agent who has just arrived at the CIA station in Berlin, Germany. Miller has a clandestine mission: to determine the identity of a now-famous whistleblower masquerading as \"Thomas Shaw\". Guided by jaded veteran Hector DeJean, Daniel learns to contend with the rough-and-tumble world of the field officer - agent-running, deception, danger and moral compromises. As he dives deeper into the German capital's hall of mirrors and uncovers the threads of a conspiracy that leads back to Washington, Daniel wonders: Can anyone ever be the same after a posting to Berlin?</p>",
-  "image": "http://static.tvmaze.com/uploads/images/medium_portrait/130/325825.jpg",
-  "network": "Epix",
+  "description": "<p><b>9-1-1</b> is a fast-paced exploration into the lives and careers of first responders – cops, paramedics, firefighters – the people who put their lives on the line to save others.</p>",  "image": "http://static.tvmaze.com/uploads/images/medium_portrait/140/350465.jpg",
+  "network": "FOX",
+  "day": "Wednesday",
   "time": "21:00"
+},{
+  "description": "<p><b>The Alienist,</b> based on the Anthony Award-winning New York Times bestseller by Caleb Carr, is a fast-paced and atmospheric psychological thriller set in the fascinating and gritty world of Gilded Age New York City. After a series of haunting and gruesome murders, psychiatrist Dr. Laszlo Kreizler, newspaper reporter John Moore and police commissioner Theodore Roosevelt come together employing emerging disciplines of psychology and early crime investigation techniques to track down one of New York City's first serial killers.</p>",
+  "image": "http://static.tvmaze.com/uploads/images/medium_portrait/136/340005.jpg",
+  "network": "TNT",
+  "day": "",
+  "time": ""
+}, {
+  "description": "<p>Star Trek, one of the most iconic and influential global television franchises, returns 50 years after it first premiered, with <b>Star Trek: Discovery</b>. The series will feature a new ship, new characters and new missions, while embracing the same ideology and hope for the future that inspired a generation of dreamers and doers.</p>",
+  "image": "http://static.tvmaze.com/uploads/images/medium_portrait/128/321676.jpg",
+  "network": "CBS All Access",
+  "day": "Sunday",
+  "time": "20:30"
 }]

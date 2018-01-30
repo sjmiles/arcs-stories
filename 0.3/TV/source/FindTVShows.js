@@ -18,8 +18,8 @@ defineParticle(({DomParticle, resolver}) => {
 
   let template = `
 
-  <div ${host} style="padding: 8px;">
-    <input style="padding: 4px;" placeholder="TV Search" on-change="_onInput">
+  <div ${host} style="padding: 8px; background-color: black;">
+    <input style="padding: 4px; border-radius: 4px;" placeholder="TV Search" on-change="_onInput">
   </div>
 
   `.trim();
@@ -46,19 +46,21 @@ defineParticle(({DomParticle, resolver}) => {
       console.log('TVShows', shows);
       let showsView = this._views.get('shows');
       // clear old data
-      let entities = await showsView.toList();
-      entities.forEach(e => showsView.remove(e.id));
+      //let entities = await showsView.toList();
+      //entities.forEach(e => showsView.remove(e));
       // add new data
       let Show = showsView.entityClass;
       shows.forEach(show => {
         show = show.show;
         let entity = new Show({
+          name: show.name,
           description: show.summary,
           image: show.image && show.image.medium || '',
           network: show.network && show.network.name || show.webChannel && show.webChannel.name || '',
           day: show.schedule && show.schedule.days && show.schedule.days.shift() || '',
           time: show.schedule && show.schedule.time
         });
+        console.log('TVShows', JSON.stringify(entity.dataClone(), null, '  '));
         showsView.store(entity);
       });
     }

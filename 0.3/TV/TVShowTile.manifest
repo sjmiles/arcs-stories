@@ -8,7 +8,7 @@
 
 import 'data/TVShow.schema'
 
-particle TVShowPanel in 'source/TVShowPanel.js'
-  TVShowPanel(in TVShow show)
+particle TVShowTile in 'source/TVShowTile.js'
+  TVShowTile(in TVShow show)
   consume item
     provide set of action

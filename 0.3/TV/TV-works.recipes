@@ -8,18 +8,18 @@
 
 import 'data/TVShow.schema'
 
-import 'TVShowPanel.manifest'
-import 'TVShowActionBar.manifest'
+import 'FindTVShows.manifest'
+import 'TVShowTile.manifest'
 
 shape HostedParticleShape
   HostedParticleShape(in TVShow show)
-  consume
+  consume item
 
 particle TVShowMultiplexer in 'https://$cdn/artifacts/Arcs/source/Multiplexer.js'
   TVShowMultiplexer(host HostedParticleShape hostedParticle, in [TVShow] list)
   consume set of item
 
-particle TVShowList in 'https://$cdn/artifacts/Arcs/source/List.js'
+particle TVShowList in 'https://$cdn/artifacts/Arcs/source/TileList.js'
   TVShowList(in [TVShow] items, inout TVShow selected)
   consume root
     provide set of item
@@ -29,20 +29,19 @@ particle TVShowList in 'https://$cdn/artifacts/Arcs/source/List.js'
 view DefaultShows of [TVShow] #showlist in 'data/shows.json'
 
 recipe
-  copy #showlist as shows
+  #copy #showlist as shows
+  create as shows
   create as selected
   slot as slot0
+  FindTVShows
+    shows = shows
+    consume root as slot0
   TVShowList
     items <- shows
     selected = selected
     consume root as slot0
       provide item as slot1
-      provide action as slot2
   TVShowMultiplexer
     list <- shows
-    hostedParticle = TVShowPanel
+    hostedParticle = TVShowTile
     consume item as slot1
-  TVShowMultiplexer
-    list <- shows
-    hostedParticle = TVShowActionBar
-    consume action as slot2

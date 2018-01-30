@@ -8,9 +8,12 @@
 
 schema TVShow
  optional
+    Text name
     Text description
     Text image
     Text network
     Text day
     Text time
     Boolean favorite
+    Boolean delete
+

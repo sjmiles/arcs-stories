@@ -8,35 +8,95 @@
 
 import 'data/TVShow.schema'
 
-import 'TVShowPanel.manifest'
+particle FindTVShows in 'source/FindTVShows.js'
+  FindTVShows(inout [TVShow] shows)
+  consume master
+  description `find TV shows`
 
-shape HostedParticleShape
-  HostedParticleShape(in TVShow show)
+##
+
+import 'TVShowTile.manifest'
+
+shape ItemShape
+  ItemShape(in TVShow show)
   consume item
 
-particle TVShowMultiplexer in 'https://$cdn/artifacts/Arcs/source/Multiplexer.js'
-  TVShowMultiplexer(host HostedParticleShape hostedParticle, in [TVShow] list)
+particle ItemMultiplexer in 'https://$cdn/artifacts/Common/source/Multiplexer.js'
+  ItemMultiplexer(host ItemShape hostedParticle, in [TVShow] list)
   consume set of item
 
-particle TVShowList in 'https://$cdn/artifacts/Arcs/source/List.js'
+##
+
+import 'TVShowActionBar.manifest'
+
+shape ActionShape
+  ActionShape(in TVShow show)
+  consume action
+
+particle ActionMultiplexer in 'https://$cdn/artifacts/Common/source/Multiplexer.js'
+  ActionMultiplexer(host ActionShape hostedParticle, in [TVShow] list)
+  consume set of action
+
+##
+
+particle TVShowList in 'https://$cdn/artifacts/Common/source/TileList.js'
   TVShowList(in [TVShow] items, inout TVShow selected)
-  consume root
+  consume master
     provide set of item
     provide set of action
   description `see ${items}`
 
-view DefaultShows of [TVShow] #showlist in 'data/shows.json'
+#view DefaultShows of [TVShow] #showlist in 'data/shows.json'
+
+##
+
+particle MasterDetail in 'https://$cdn/artifacts/Common/source/MasterDetailSlide.js'
+  MasterDetail(inout TVShow selected)
+  consume root
+    provide master
+    provide detail
+      view selected
+
+particle TVShowPanel in 'source/TVShowPanel.js'
+  TVShowPanel(in TVShow show)
+  consume detail
+    provide action
+
+particle TVShowPanelActionBar in 'source/TVShowActionBar.js'
+  TVShowPanelActionBar(inout TVShow show)
+  consume action
+
+##
 
 recipe
-  copy #showlist as shows
+  create #shows as shows
   create as selected
-  slot as slot0
-  TVShowList
-    items <- shows
+  MasterDetail
     selected = selected
-    consume root as slot0
-      provide item as slot1
-  TVShowMultiplexer
-    list <- shows
-    hostedParticle = TVShowPanel
-    consume item as slot1
+    consume root as rootSlot
+      provide master as masterSlot
+      provide detail as detailSlot
+  TVShowPanel
+    show = selected
+    consume detail as detailSlot
+      provide action as showActionSlot
+  TVShowPanelActionBar
+    show = selected
+    consume action as showActionSlot
+  FindTVShows
+    shows = shows
+    consume master as masterSlot
+  TVShowList
+    items = shows
+    selected = selected
+    consume master as masterSlot
+      provide item as itemSlot
+      provide action as actionSlot
+  ItemMultiplexer
+    list = shows
+    hostedParticle = TVShowTile
+    consume item as itemSlot
+  ActionMultiplexer
+    list = shows
+    hostedParticle = TVShowActionBar
+    consume action as actionSlot

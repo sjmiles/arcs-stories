@@ -14,24 +14,30 @@ defineParticle(({DomParticle, resolver}) => {
 
   const template = `
 <style>
-  [${host}] p {
+  [${host}] [description] p {
     margin: 0;
   }
 </style>
-<div style="display: flex; align-items: start; padding-bottom: 8px;">
-  <img src="{{image}}" style="vertical-align: middle; padding-right: 8px;">
-  <div>
-    <div unsafe-html="{{description}}"></div>
-    <br>
-    <div><b>{{network}}</b> <span>{{day}}</span> <span>{{time}}</span></div>
+<div ${host} style="padding-bottom: 8px; min-height: 500px;">
+  <div slotid="action"></div>
+  <div style="display: flex; align-items: start; padding-bottom: 8px;">
+    <img src="{{image}}" style="vertical-align: middle; padding-right: 8px;">
+    <div>
+      <b>{{network}}</b>
+      <br>
+      <span>{{day}}</span> <span>{{time}}</span>
+    </div>
   </div>
+  <div description unsafe-html="{{description}}"></div>
 </div>
-<!--<div slotid="action" subid$="{{id}}"></div>-->
     `.trim();
 
   return class extends DomParticle {
     get template() {
       return template;
+    }
+    _willReceiveProps(props, state) {
+      state.shows = props.shows;
     }
     _shouldRender(props) {
       return props.show;
@@ -41,7 +47,7 @@ defineParticle(({DomParticle, resolver}) => {
         image: show.image,
         description: show.description,
         network: show.network,
-        day: `${show.day}s`,
+        day: show.day ? `${show.day}s` : '(n/a)',
         time: show.time,
         id: show.id
       };

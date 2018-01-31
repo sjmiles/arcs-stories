@@ -12,6 +12,7 @@ import 'data/TVShow.schema'
 # MasterDetail layout w/ Slide-up detail panel
 ##############################################
 
+# exists to massage types
 particle MasterDetail in 'https://$cdn/artifacts/Common/source/MasterDetailSlide.js'
   MasterDetail(inout TVShow selected)
   consume root
@@ -23,6 +24,7 @@ particle MasterDetail in 'https://$cdn/artifacts/Common/source/MasterDetailSlide
 # takes user <input> for search query and produces a list of shows
 ##################################################################
 
+# exists to massage slots
 particle FindTVShows in 'source/FindTVShows.js'
   FindTVShows(inout [TVShow] shows)
   consume master
@@ -32,6 +34,7 @@ particle FindTVShows in 'source/FindTVShows.js'
 # Tiled-list Show renderer
 ##########################
 
+# exists to massage types
 particle TVShowList in 'https://$cdn/artifacts/Common/source/TileList.js'
   TVShowList(in [TVShow] items, inout TVShow selected)
   consume master
@@ -43,7 +46,10 @@ particle TVShowList in 'https://$cdn/artifacts/Common/source/TileList.js'
 # Tile-shaped Show renderer and multiplexer
 ###########################################
 
+# exists to feed multiplexer
 import 'TVShowTile.manifest'
+
+# multiplexer boilerplate
 
 shape ItemShape
   ItemShape(in TVShow show)

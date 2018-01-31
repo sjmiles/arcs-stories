@@ -1,1 +1,1 @@
-var service = `http://api.tvmaze.com`;
+var service = `https://api.tvmaze.com`;

@@ -11,4 +11,4 @@ import 'data/TVShow.schema'
 particle FindTVShows in 'source/FindTVShows.js'
   FindTVShows(inout [TVShow] shows)
   consume root
-  description `find TV shows`
+  description `find tv shows`

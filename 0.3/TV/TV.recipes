@@ -10,6 +10,7 @@ import 'data/TVShow.schema'
 
 ##############################################
 # MasterDetail layout w/ Slide-up detail panel
+##############################################
 
 particle MasterDetail in 'https://$cdn/artifacts/Common/source/MasterDetailSlide.js'
   MasterDetail(inout TVShow selected)
@@ -20,6 +21,7 @@ particle MasterDetail in 'https://$cdn/artifacts/Common/source/MasterDetailSlide
 
 ##################################################################
 # takes user <input> for search query and produces a list of shows
+##################################################################
 
 particle FindTVShows in 'source/FindTVShows.js'
   FindTVShows(inout [TVShow] shows)
@@ -28,6 +30,7 @@ particle FindTVShows in 'source/FindTVShows.js'
 
 ##########################
 # Tiled-list Show renderer
+##########################
 
 particle TVShowList in 'https://$cdn/artifacts/Common/source/TileList.js'
   TVShowList(in [TVShow] items, inout TVShow selected)
@@ -38,6 +41,7 @@ particle TVShowList in 'https://$cdn/artifacts/Common/source/TileList.js'
 
 ###########################################
 # Tile-shaped Show renderer and multiplexer
+###########################################
 
 import 'TVShowTile.manifest'
 
@@ -51,6 +55,7 @@ particle ItemMultiplexer in 'https://$cdn/artifacts/Common/source/Multiplexer.js
 
 ####################################
 # ActionBar particle and multiplexer
+####################################
 
 import 'TVShowActionBar.manifest'
 
@@ -64,11 +69,13 @@ particle ActionMultiplexer in 'https://$cdn/artifacts/Common/source/Multiplexer.
 
 ################
 # Episode lookup
+################
 
 import 'FindTVEpisodes.manifest'
 
 ############################################
 # ShowPanel for details, including ActionBar
+############################################
 
 particle TVShowPanel in 'source/TVShowPanel.js'
   TVShowPanel(in TVShow show)
@@ -82,6 +89,7 @@ particle TVShowPanelActionBar in 'source/TVShowActionBar.js'
 
 #######################
 # Episode-list renderer
+#######################
 
 particle TVEpisodeList in 'https://$cdn/artifacts/Common/source/List.js'
   TVEpisodeList(in [TVEpisode] items)
@@ -92,6 +100,7 @@ particle TVEpisodeList in 'https://$cdn/artifacts/Common/source/List.js'
 
 ##################################
 # Episode renderer and multiplexer
+##################################
 
 import 'TVEpisodeItem.manifest'
 
@@ -103,7 +112,7 @@ particle EpisodeMultiplexer in 'https://$cdn/artifacts/Common/source/Multiplexer
   EpisodeMultiplexer(host EpisodeItemShape hostedParticle, in [TVEpisode] list)
   consume set of item
 
-##
+##################################
 
 recipe
   create #shows as shows

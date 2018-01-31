@@ -13,7 +13,7 @@
 defineParticle(({DomParticle, resolver}) => {
 
   importScripts(resolver('FindTVShows/TvMaze.js'));
-  
+
   let host = "find-tv-shows";
 
   let template = `
@@ -56,7 +56,7 @@ defineParticle(({DomParticle, resolver}) => {
           showid: String(show.id),
           name: show.name,
           description: show.summary,
-          image: show.image && show.image.medium || '',
+          image: show.image && show.image.medium.replace('http:', 'https:') || '',
           network: show.network && show.network.name || show.webChannel && show.webChannel.name || '',
           day: show.schedule && show.schedule.days && show.schedule.days.shift() || '',
           time: show.schedule && show.schedule.time

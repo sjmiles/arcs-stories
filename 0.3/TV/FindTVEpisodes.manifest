@@ -6,15 +6,9 @@
 # subject to an additional IP rights grant found at
 # http://polymer.github.io/PATENTS.txt
 
-schema TVShow
- optional
-    Text showid
-    Text name
-    Text description
-    Text image
-    Text network
-    Text day
-    Text time
-    Boolean favorite
-    Boolean delete
+import 'data/TVShow.schema'
+import 'data/TVEpisode.schema'
 
+particle FindTVEpisodes in 'source/FindTVEpisodes.js'
+  FindTVEpisodes(in TVShow show, inout [TVEpisode] episodes)
+  description `find TV episodes`

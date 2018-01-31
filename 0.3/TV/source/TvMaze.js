@@ -1,1 +1,1 @@
-const service = `http://api.tvmaze.com/search/shows`;
+var service = `http://api.tvmaze.com`;

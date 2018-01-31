@@ -8,12 +8,36 @@
 
 import 'data/TVShow.schema'
 
+##############################################
+# MasterDetail layout w/ Slide-up detail panel
+
+particle MasterDetail in 'https://$cdn/artifacts/Common/source/MasterDetailSlide.js'
+  MasterDetail(inout TVShow selected)
+  consume root
+    provide master
+    provide detail
+      view selected
+
+##################################################################
+# takes user <input> for search query and produces a list of shows
+
 particle FindTVShows in 'source/FindTVShows.js'
   FindTVShows(inout [TVShow] shows)
   consume master
   description `find TV shows`
 
-##
+##########################
+# Tiled-list Show renderer
+
+particle TVShowList in 'https://$cdn/artifacts/Common/source/TileList.js'
+  TVShowList(in [TVShow] items, inout TVShow selected)
+  consume master
+    provide set of item
+    provide set of action
+  description `see ${items}`
+
+###########################################
+# Tile-shaped Show renderer and multiplexer
 
 import 'TVShowTile.manifest'
 
@@ -25,7 +49,8 @@ particle ItemMultiplexer in 'https://$cdn/artifacts/Common/source/Multiplexer.js
   ItemMultiplexer(host ItemShape hostedParticle, in [TVShow] list)
   consume set of item
 
-##
+####################################
+# ActionBar particle and multiplexer
 
 import 'TVShowActionBar.manifest'
 
@@ -37,49 +62,74 @@ particle ActionMultiplexer in 'https://$cdn/artifacts/Common/source/Multiplexer.
   ActionMultiplexer(host ActionShape hostedParticle, in [TVShow] list)
   consume set of action
 
-##
+################
+# Episode lookup
 
-particle TVShowList in 'https://$cdn/artifacts/Common/source/TileList.js'
-  TVShowList(in [TVShow] items, inout TVShow selected)
-  consume master
-    provide set of item
-    provide set of action
-  description `see ${items}`
+import 'FindTVEpisodes.manifest'
 
-#view DefaultShows of [TVShow] #showlist in 'data/shows.json'
-
-##
-
-particle MasterDetail in 'https://$cdn/artifacts/Common/source/MasterDetailSlide.js'
-  MasterDetail(inout TVShow selected)
-  consume root
-    provide master
-    provide detail
-      view selected
+############################################
+# ShowPanel for details, including ActionBar
 
 particle TVShowPanel in 'source/TVShowPanel.js'
   TVShowPanel(in TVShow show)
   consume detail
     provide action
+    provide episodes
 
 particle TVShowPanelActionBar in 'source/TVShowActionBar.js'
   TVShowPanelActionBar(inout TVShow show)
   consume action
+
+#######################
+# Episode-list renderer
+
+particle TVEpisodeList in 'https://$cdn/artifacts/Common/source/List.js'
+  TVEpisodeList(in [TVEpisode] items)
+  consume episodes
+    provide set of item
+    provide set of action
+  description `see ${items}`
+
+##################################
+# Episode renderer and multiplexer
+
+import 'TVEpisodeItem.manifest'
+
+shape EpisodeItemShape
+  EpisodeItemShape(in TVEpisode episode)
+  consume item
+
+particle EpisodeMultiplexer in 'https://$cdn/artifacts/Common/source/Multiplexer.js'
+  EpisodeMultiplexer(host EpisodeItemShape hostedParticle, in [TVEpisode] list)
+  consume set of item
 
 ##
 
 recipe
   create #shows as shows
   create as selected
+  create as episodes
   MasterDetail
     selected = selected
     consume root as rootSlot
       provide master as masterSlot
       provide detail as detailSlot
+  FindTVEpisodes
+    show = selected
+    episodes = episodes
   TVShowPanel
     show = selected
     consume detail as detailSlot
       provide action as showActionSlot
+      provide episodes as episodesSlot
+  TVEpisodeList
+    items = episodes
+    consume episodes as episodesSlot
+      provide item as episodeSlot
+  EpisodeMultiplexer
+    list = episodes
+    hostedParticle = TVEpisodeItem
+    consume item as episodeSlot
   TVShowPanelActionBar
     show = selected
     consume action as showActionSlot

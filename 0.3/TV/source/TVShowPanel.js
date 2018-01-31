@@ -18,7 +18,7 @@ defineParticle(({DomParticle, resolver}) => {
     margin: 0;
   }
 </style>
-<div ${host} style="padding-bottom: 8px; min-height: 500px;">
+<div ${host} Xstyle="padding-bottom: 8px; height: 100%; overflow-y: auto; box-sizing: border-box;">
   <div slotid="action"></div>
   <div style="display: flex; align-items: start; padding-bottom: 8px;">
     <img src="{{image}}" style="vertical-align: middle; padding-right: 8px;">
@@ -28,7 +28,9 @@ defineParticle(({DomParticle, resolver}) => {
       <span>{{day}}</span> <span>{{time}}</span>
     </div>
   </div>
-  <div description unsafe-html="{{description}}"></div>
+  <div description style="margin: 16px 0;" unsafe-html="{{description}}"></div>
+  <div style="color: #333; font-size: 1.5em; margin: 16px 0;">Episodes</div>
+  <div slotid="episodes"></div>
 </div>
     `.trim();
 

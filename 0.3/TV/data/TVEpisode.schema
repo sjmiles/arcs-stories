@@ -6,15 +6,13 @@
 # subject to an additional IP rights grant found at
 # http://polymer.github.io/PATENTS.txt
 
-schema TVShow
+schema TVEpisode
  optional
-    Text showid
+    Number episodeid
     Text name
-    Text description
-    Text image
-    Text network
-    Text day
-    Text time
-    Boolean favorite
-    Boolean delete
-
+    Number season
+    Number number
+    Text airdate
+    Number runtime
+    URL image
+    Text summary

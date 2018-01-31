@@ -13,7 +13,7 @@
 defineParticle(({DomParticle, resolver}) => {
 
   importScripts(resolver('FindTVShows/TvMaze.js'));
-
+  
   let host = "find-tv-shows";
 
   let template = `
@@ -38,7 +38,7 @@ defineParticle(({DomParticle, resolver}) => {
     }
     async _fetchShows(query) {
       this._setState({count: -1});
-      let response = await fetch(`${service}?q=${query}`);
+      let response = await fetch(`${service}/search/shows?q=${query}`);
       let shows = await response.json();
       this._receiveShows(shows);
     }
@@ -53,6 +53,7 @@ defineParticle(({DomParticle, resolver}) => {
       shows.forEach(show => {
         show = show.show;
         let entity = new Show({
+          showid: String(show.id),
           name: show.name,
           description: show.summary,
           image: show.image && show.image.medium || '',

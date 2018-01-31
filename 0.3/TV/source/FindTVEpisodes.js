@@ -46,7 +46,7 @@ defineParticle(({DomParticle, resolver}) => {
           number: episode.number,
           airdate: episode.airdate,
           runtime: episode.runtime,
-          image: episode.image && episode.image.medium,
+          image: episode.image && episode.image.medium.replace('http:', 'https:'),
           summary: episode.summary
         });
         console.log('TVEpisodes', JSON.stringify(entity.dataClone(), null, '  '));

@@ -61,7 +61,7 @@ defineParticle(({DomParticle, resolver}) => {
           day: show.schedule && show.schedule.days && show.schedule.days.shift() || '',
           time: show.schedule && show.schedule.time
         });
-        console.log('TVShows', JSON.stringify(entity.dataClone(), null, '  '));
+        //console.log('TVShows', JSON.stringify(entity.dataClone(), null, '  '));
         showsView.store(entity);
       });
     }

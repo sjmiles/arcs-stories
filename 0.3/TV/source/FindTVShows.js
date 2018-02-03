@@ -1,5 +1,3 @@
-//http://api.tvmaze.com/search/shows?q=star+trek+discovery
-
 // @license
 // Copyright (c) 2017 Google Inc. All rights reserved.
 // This code may only be used under the BSD style license found at
@@ -10,16 +8,41 @@
 
 "use strict";
 
-defineParticle(({DomParticle, resolver}) => {
+defineParticle(({DomParticle, resolver, html}) => {
 
   importScripts(resolver('FindTVShows/TvMaze.js'));
 
   let host = "find-tv-shows";
 
-  let template = `
+  let template = html`
+  <style>
+    [${host}] {
+      display: flex;
+      align-items: center;
+      padding: 8px 16px;
+    }
+    [${host}] i {
+      font-family: 'Material Icons';
+      font-size: 32px;
+      font-style: normal;
+      -webkit-font-feature-settings: 'liga';
+      -webkit-font-smoothing: antialiased;
+      vertical-align: middle;
+      cursor: pointer;
+    }
+    [${host}] input {
+      flex: 1;
+      font-size: 1.2em;
+      padding: 7px;
+      margin: 0 8px;
+      border: none;
+      outline: none;
+    }
+  </style>
 
-  <div ${host} style="padding: 8px; background-color: black;">
-    <input style="padding: 4px; border-radius: 4px;" placeholder="TV Search" on-change="_onInput">
+  <div ${host}>
+    <i>search</i>
+    <input placeholder="TV Show Search" on-change="_onChange">
   </div>
 
   `.trim();
@@ -28,7 +51,7 @@ defineParticle(({DomParticle, resolver}) => {
     get template() {
       return template;
     }
-    _onInput(e, state) {
+    _onChange(e) {
       this._setState({query: e.data.value || '', count: 0});
     }
     _update(props, state) {

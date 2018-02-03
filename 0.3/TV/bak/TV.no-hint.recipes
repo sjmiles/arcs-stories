@@ -21,41 +21,29 @@ recipe
   use #shelltheme as theme
   create #shows as shows
   create as selected
-  create as episodes
+  # create as episodes
   # particles
   ShellTheme
     theme = theme
   TVMasterDetail
     selected = selected
-    consume root as rootSlot
-      provide master as masterSlot
-      provide detail as detailSlot
   FindTVShows
     shows = shows
   TVShowList
     items = shows
     selected = selected
-    consume master as masterSlot
-      provide item as showItemSlot
-  ShowMultiplexer
+  ItemMultiplexer
     list = shows
     hostedParticle = TVShowTile
-    consume item as showItemSlot
   TVShowPanel
     show = selected
-    consume detail as detailSlot
-      provide episodes as episodeListSlot
-  FindTVEpisodes
-    show = selected
-    episodes = episodes
-  TVEpisodeList
-    items = episodes
-    consume episodes as episodeListSlot
-      provide item as episodeItemSlot
-  EpisodeMultiplexer
-    list = episodes
-    hostedParticle = TVEpisodeItem
-    consume item as episodeItemSlot
-
+  #FindTVEpisodes
+  #  show = selected
+  #  episodes = episodes
+  #TVEpisodeList
+  #  items = episodes
+  #EpisodeMultiplexer
+  #  list = episodes
+  #  hostedParticle = TVEpisodeItem
 
 

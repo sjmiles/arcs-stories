@@ -8,7 +8,7 @@
 
 "use strict";
 
-defineParticle(({DomParticle, resolver}) => {
+defineParticle(({DomParticle, log}) => {
 
   let host = `show-tile`;
 
@@ -27,10 +27,9 @@ defineParticle(({DomParticle, resolver}) => {
     //}
     _render({show}) {
       if (show) {
-        //console.log('TVShowTile', show.image);
+        log(`[${show.image}]`);
         return {
-          //image: show.image
-          image: {backgroundImage: `url(${show.image})`}
+          image: {backgroundImage: `url("${show.image}")`}
         };
       }
     }

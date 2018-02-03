@@ -7,8 +7,14 @@
 # http://polymer.github.io/PATENTS.txt
 
 import 'data/TVShow.schema'
-import 'data/TVEpisode.schema'
 
-particle FindTVEpisodes in 'source/FindTVEpisodes.js'
-  FindTVEpisodes(in TVShow show, inout [TVEpisode] episodes)
-  description `find TV episodes`
+########################################
+# renderers for detail pane and actions
+########################################
+
+particle TVShowPanel in 'source/TVShowPanel.js'
+  TVShowPanel(in TVShow show)
+  consume detail
+    provide action
+    provide episodes
+

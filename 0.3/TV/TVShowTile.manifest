@@ -6,6 +6,8 @@
 # subject to an additional IP rights grant found at
 # http://polymer.github.io/PATENTS.txt
 
+# this file has to exist as named to feed the multiplexer (fix pending)
+
 import 'data/TVShow.schema'
 
 particle TVShowTile in 'source/TVShowTile.js'

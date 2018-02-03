@@ -6,8 +6,7 @@
 # subject to an additional IP rights grant found at
 # http://polymer.github.io/PATENTS.txt
 
-import 'data/TVShow.schema'
+import 'https://$cdn/artifacts/Common/data/Theme.schema'
 
-particle TVShowActionBar in 'source/TVShowActionBar.js'
-  TVShowActionBar(inout TVShow show)
-  consume action
+particle ShellTheme in 'source/ShellTheme.js'
+  ShellTheme(inout Theme theme)

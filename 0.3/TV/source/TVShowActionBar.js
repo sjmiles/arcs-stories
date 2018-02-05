@@ -10,12 +10,14 @@
 
 defineParticle(({DomParticle}) => {
 
+  const host = `tvshow-action-bar`;
+
   const template = `
-    <div style="margin: 4px 0; text-align: right;">
-      <i class="material-icons" style="font-size: 16px;" on-click="_onFavorite">{{favorite}}</i>
-      <i class="material-icons" style="font-size: 16px;">share</i>
-      <i class="material-icons" style="font-size: 16px;">playlist_play</i>
-      <i class="material-icons" style="font-size: 16px;" on-click="_onDelete">delete</i>
+    <div [${host}] style="margin: 4px 0; text-align: right; font-size: 24px;">
+      <i class="material-icons" on-click="_onFavorite">{{favorite}}</i>
+      <i class="material-icons">share</i>
+      <i class="material-icons">playlist_play</i>
+      <i class="material-icons" on-click="_onDelete">delete</i>
     </div>
   `.trim();
 
@@ -33,7 +35,15 @@ defineParticle(({DomParticle}) => {
       for (let flag in flags) {
         show[flag] = flags[flag];
       }
+      //
       this._views.get('show').set(show);
+      //
+      /*
+      const showHandle = this._views.get('show');
+      let Show = showHandle.entityClass;
+      let entity = new Show(show.rawData);
+      showHandle.set(entity);
+      */
     }
     _onDelete() {
       this._setShowFlags({delete: true});

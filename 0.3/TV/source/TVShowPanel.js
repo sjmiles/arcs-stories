@@ -18,8 +18,8 @@ defineParticle(({DomParticle, resolver}) => {
     margin: 0;
   }
 </style>
-<div ${host} Xstyle="padding-bottom: 8px; height: 100%; overflow-y: auto; box-sizing: border-box;">
-  <div slotid="action"></div>
+<div ${host}">
+  <div slotid="action" style="margin-right: 48px;"></div>
   <div style="display: flex; align-items: start; padding-bottom: 8px;">
     <img src="{{image}}" style="vertical-align: middle; padding-right: 8px;">
     <div>
@@ -38,13 +38,10 @@ defineParticle(({DomParticle, resolver}) => {
     get template() {
       return template;
     }
-    _willReceiveProps(props, state) {
-      state.shows = props.shows;
-    }
     _shouldRender(props) {
       return props.show;
     }
-    _render({show}, state) {
+    _render({show}) {
       return {
         image: show.image,
         description: show.description,

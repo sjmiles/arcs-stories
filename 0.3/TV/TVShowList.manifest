@@ -9,7 +9,7 @@
 import 'data/TVShow.schema'
 
 particle TVShowList in 'https://$cdn/artifacts/Common/source/TileList.js'
-  TVShowList(in [TVShow] items, inout TVShow selected)
+  TVShowList(inout [TVShow] items, inout TVShow selected)
   consume master
     provide set of item
     provide set of action

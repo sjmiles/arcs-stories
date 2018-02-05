@@ -12,9 +12,10 @@ import 'ShellTheme.manifest'
 
 import 'TVMasterDetail.manifest'
 import 'FindTVShows.manifest'
-import 'TVShowTiles.manifest'
+import 'TVShowList.manifest'
 import 'TVShowPanel.manifest'
 import 'TVEpisodes.manifest'
+import 'TVShowActionBar.manifest'
 
 recipe
   # handles
@@ -44,7 +45,11 @@ recipe
   TVShowPanel
     show = selected
     consume detail as detailSlot
+      provide action as panelActionSlot
       provide episodes as episodeListSlot
+  TVShowActionBar
+    show = selected
+    consume action as panelActionSlot
   FindTVEpisodes
     show = selected
     episodes = episodes

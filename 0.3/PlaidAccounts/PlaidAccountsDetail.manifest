@@ -12,4 +12,4 @@ import 'PlaidTransaction.schema'
 particle PlaidAccountsDetail in 'source/PlaidAccountsDetail.js'
   PlaidAccountsDetail(in PlaidAccount selected, in [PlaidTransaction] transactions)
   consume detail
-  #description `account details`
+  //description `account details`

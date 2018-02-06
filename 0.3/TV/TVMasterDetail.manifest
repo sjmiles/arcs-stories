@@ -8,9 +8,9 @@
 
 import 'data/TVShow.schema'
 
-##############################################
+//##############################################
 // MasterDetail layout w/ Slide-up detail panel
-##############################################
+//##############################################
 
 // exists to massage types
 particle TVMasterDetail in 'https://$cdn/artifacts/Common/source/MasterDetailSlide.js'

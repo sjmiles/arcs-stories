@@ -8,9 +8,9 @@
 
 import 'data/TVShow.schema'
 
-########################################
+//########################################
 // renderers for detail pane and actions
-########################################
+//########################################
 
 particle TVShowPanel in 'source/TVShowPanel.js'
   TVShowPanel(in TVShow show)

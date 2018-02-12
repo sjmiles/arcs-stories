@@ -8,17 +8,17 @@
 
 "use strict";
 
-defineParticle(({DomParticle, resolver}) => {
+defineParticle(({DomParticle, resolver, html}) => {
 
   let host = `show-panel`;
 
-  const template = `
+  const template = html`
 <style>
   [${host}] [description] p {
     margin: 0;
   }
 </style>
-<div ${host}">
+<div ${host}>
   <div slotid="action" style="margin-right: 48px;"></div>
   <div style="display: flex; align-items: start; padding-bottom: 8px;">
     <img src="{{image}}" style="vertical-align: middle; padding-right: 8px;">

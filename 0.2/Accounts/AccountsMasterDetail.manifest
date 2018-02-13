@@ -8,7 +8,7 @@
 
 import 'Account.schema'
 
-particle AccountsMasterDetail in 'https://$cdn/artifacts/Common/source/MasterDetail.js'
+particle AccountsMasterDetail in 'https://$cdn/artifacts/Things/source/MasterDetail.js'
   AccountsMasterDetail(inout Account selected)
   consume root
     provide master

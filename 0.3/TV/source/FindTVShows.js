@@ -33,8 +33,9 @@ defineParticle(({DomParticle, resolver, html}) => {
     [${host}] input {
       flex: 1;
       font-size: 1.2em;
-      padding: 7px;
+      padding: 7px 16px;
       margin: 0 8px;
+      border-radius: 16px;
       border: none;
       outline: none;
     }

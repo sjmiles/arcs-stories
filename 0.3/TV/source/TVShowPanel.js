@@ -19,7 +19,7 @@ defineParticle(({DomParticle, resolver, html}) => {
   }
 </style>
 <div ${host}>
-  <div slotid="action" style="margin-right: 48px;"></div>
+  <div slotid="action" style="margin-right: 40px;"></div>
   <div style="display: flex; align-items: start; padding-bottom: 8px;">
     <img src="{{image}}" style="vertical-align: middle; padding-right: 8px;">
     <div>

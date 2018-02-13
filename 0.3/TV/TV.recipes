@@ -8,43 +8,76 @@
 
 import 'data/TVShow.schema'
 
-import 'ShellTheme.manifest'
+schema Theme
+  optional
+    Text mainBackground
+    Text mainColor
 
-import 'TVMasterDetail.manifest'
-import 'FindTVShows.manifest'
-import 'TVShowList.manifest'
-import 'TVShowPanel.manifest'
+particle ShellTheme in 'source/ShellTheme.js'
+  ShellTheme(inout Theme theme)
+
+particle FindTVShows in 'source/FindTVShows.js'
+  FindTVShows(inout [TVShow] shows)
+  consume root
+  description `find tv shows`
+
+particle TVShowList in 'https://$cdn/artifacts/Common/source/TileList.js'
+  TVShowList(inout [TVShow] items, inout TVShow selected)
+  consume root
+    provide set of item
+    provide set of action
+  description `see ${items}`
+
+// this file has to be separate to feed multiplexer (fix pending)
+import 'TVShowTile.manifest'
+
+shape ShowItemShape
+  ShowItemShape(in TVShow show)
+  consume item
+
+particle ShowMultiplexer in 'https://$cdn/artifacts/Common/source/Multiplexer.js'
+  ShowMultiplexer(host ShowItemShape hostedParticle, in [TVShow] list)
+  consume set of item
+
+particle TVShowPanel in 'source/TVShowPanel.js'
+  TVShowPanel(in TVShow show)
+  consume content
+    provide action
+    provide episodes
+
 import 'TVEpisodes.manifest'
 import 'TVShowActionBar.manifest'
 
+particle DetailSlider in 'https://$cdn/artifacts/Common/source/DetailSlider.js'
+  DetailSlider(inout TVShow selected)
+  consume modal
+    provide content
+
 recipe
-  // handles
   use #shelltheme as theme
   create #shows as shows
   create as selected
   create as episodes
-  // particles
   ShellTheme
     theme = theme
-  TVMasterDetail
-    selected = selected
-    consume root as rootSlot
-      provide master as masterSlot
-      provide detail as detailSlot
   FindTVShows
     shows = shows
   TVShowList
     items = shows
     selected = selected
-    consume master as masterSlot
+    consume root as rootSlot
       provide item as showItemSlot
   ShowMultiplexer
     list = shows
     hostedParticle = TVShowTile
     consume item as showItemSlot
+  DetailSlider
+    selected = selected
+    consume modal as modalSlot
+      provide content as contentSlot
   TVShowPanel
     show = selected
-    consume detail as detailSlot
+    consume content as contentSlot
       provide action as panelActionSlot
       provide episodes as episodeListSlot
   TVShowActionBar

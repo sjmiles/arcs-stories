@@ -1,5 +1,3 @@
-//http://api.tvmaze.com/search/episodes?q=star+trek+discovery
-
 // @license
 // Copyright (c) 2017 Google Inc. All rights reserved.
 // This code may only be used under the BSD style license found at
@@ -10,14 +8,15 @@
 
 "use strict";
 
+/* global defineParticle, importScripts */
+
 defineParticle(({DomParticle, resolver}) => {
 
   importScripts(resolver('FindTVEpisodes/TvMaze.js'));
-
-  const host = "find-tv-episodes";
+  /* global service */
 
   return class extends DomParticle {
-    _onInput(e, state) {
+    _onInput(e) {
       this._setState({query: e.data.value || '', count: 0});
     }
     _update({episodes,show}, {count}) {
@@ -49,7 +48,7 @@ defineParticle(({DomParticle, resolver}) => {
           image: episode.image && episode.image.medium.replace('http:', 'https:'),
           summary: episode.summary
         });
-        console.log('TVEpisodes', JSON.stringify(entity.dataClone(), null, '  '));
+        //console.log('TVEpisodes', JSON.stringify(entity.dataClone(), null, '  '));
         episodesView.store(entity);
       });
     }

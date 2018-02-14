@@ -1,0 +1,89 @@
+// @license
+// Copyright (c) 2017 Google Inc. All rights reserved.
+// This code may only be used under the BSD style license found at
+// http://polymer.github.io/LICENSE.txt
+// Code distributed by Google as part of this project is also
+// subject to an additional IP rights grant found at
+// http://polymer.github.io/PATENTS.txt
+
+import 'data/TVShow.schema'
+
+schema Theme
+  optional
+    Text mainBackground
+    Text mainColor
+
+particle ShellTheme in 'source/ShellTheme.js'
+  ShellTheme(inout Theme theme)
+
+particle TVShowList in 'https://$cdn/artifacts/Common/source/TileList.js'
+  TVShowList(in [TVShow] items, inout TVShow selected)
+  consume root
+    provide set of item
+    provide set of action
+  description `see ${items}`
+
+// this file has to be separate to feed multiplexer (fix pending)
+import 'TVShowTile.manifest'
+
+shape ShowItemShape
+  ShowItemShape(in TVShow show)
+  consume item
+
+particle ShowMultiplexer in 'https://$cdn/artifacts/Common/source/Multiplexer.js'
+  ShowMultiplexer(host ShowItemShape hostedParticle, in [TVShow] list)
+  consume set of item
+
+particle TVShowPanel in 'source/TVShowPanel.js'
+  TVShowPanel(in TVShow show)
+  consume content
+    provide action
+    provide episodes
+
+import 'TVEpisodes.manifest'
+import 'TVShowActionBar.manifest'
+
+particle DetailSlider in 'https://$cdn/artifacts/Common/source/DetailSlider.js'
+  DetailSlider(inout TVShow selected)
+  consume modal
+    provide content
+
+recipe
+  use #shelltheme as theme
+  map #shows as shows
+  create as selected
+  create as episodes
+  ShellTheme
+    theme = theme
+  TVShowList
+    items = shows
+    selected = selected
+    consume root as rootSlot
+      provide item as showItemSlot
+  ShowMultiplexer
+    list = shows
+    hostedParticle = TVShowTile
+    consume item as showItemSlot
+  DetailSlider
+    selected = selected
+    consume modal as modalSlot
+      provide content as contentSlot
+  TVShowPanel
+    show = selected
+    consume content as contentSlot
+      provide action as panelActionSlot
+      provide episodes as episodeListSlot
+  TVShowActionBar
+    show = selected
+    consume action as panelActionSlot
+  FindTVEpisodes
+    show = selected
+    episodes = episodes
+  TVEpisodeList
+    items = episodes
+    consume episodes as episodeListSlot
+      provide item as episodeItemSlot
+  EpisodeMultiplexer
+    list = episodes
+    hostedParticle = TVEpisodeItem
+    consume item as episodeItemSlot

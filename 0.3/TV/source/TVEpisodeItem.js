@@ -38,21 +38,10 @@ defineParticle(({DomParticle, resolver}) => {
       if (episode) {
         const model = episode.dataClone();
         if (!model.image) {
-          model.image = resolver('FindTVShows/../data/TV.png');
+          model.image = resolver('TVEpisodeItem/../data/TV.png');
         }
         return model;
       }
-      /*
-        return {
-          img: episode.image || '',
-          number: episode.number,
-          name: episode.name,
-          airdate: episode.airdate,
-          runtime: episode.runtime,
-          summary: episode.summary
-        };
-      }
-      */
     }
   };
 });

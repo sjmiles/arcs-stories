@@ -9,19 +9,24 @@
 "use strict";
 
 /* global defineParticle, importScripts */
-
 defineParticle(({DomParticle, resolver}) => {
 
-  importScripts(resolver('FindTVEpisodes/TvMaze.js'));
   /* global service */
+  importScripts(resolver('FindTVEpisodes/TvMaze.js'));
 
   return class extends DomParticle {
-    _onInput(e) {
-      this._setState({query: e.data.value || '', count: 0});
-    }
-    _update({episodes,show}, {count}) {
-      if (episodes && show && !count) {
-        this._fetchEpisodes(show);
+    _update({episodes,show}, state) {
+      // If we are asynchronously populating episodes, wait until this is done before
+      // handling additional updates.
+      // TODO(sjmiles): Maybe generalize this notion into DomParticle?
+      if (!state.recieving) {
+        if (show && show.showid !== state.showid) {
+          state.count = 0;
+          state.showid = show.showid;
+        }
+        if (episodes && show && !state.count) {
+          this._fetchEpisodes(show);
+        }
       }
     }
     async _fetchEpisodes(show) {
@@ -33,9 +38,11 @@ defineParticle(({DomParticle, resolver}) => {
     async _receiveEpisodes(episodes) {
       console.log('TVEpisodes', episodes);
       const episodesView = this._views.get('episodes');
+      // semaphore to protect await block below
+      this._setState({receiving: true});
       // clear old data
-      //let entities = await episodesView.toList();
-      //entities.forEach(e => episodesView.remove(e));
+      let entities = await episodesView.toList();
+      entities.forEach(e => episodesView.remove(e));
       // add new data
       const Episode = episodesView.entityClass;
       episodes.forEach(episode => {
@@ -51,6 +58,7 @@ defineParticle(({DomParticle, resolver}) => {
         //console.log('TVEpisodes', JSON.stringify(entity.dataClone(), null, '  '));
         episodesView.store(entity);
       });
+      this._setState({receiving: false});
     }
   };
 });

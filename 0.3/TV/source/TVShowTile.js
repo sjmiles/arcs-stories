@@ -27,7 +27,8 @@ defineParticle(({DomParticle, log}) => {
     //}
     _render({show}) {
       if (show) {
-        log(`[${show.image}]`);
+        log('rendering');
+        //log(`[${show.image}]`);
         return {
           image: {backgroundImage: `url("${show.image}")`}
         };

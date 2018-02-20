@@ -38,7 +38,7 @@ defineParticle(({DomParticle, resolver}) => {
     async _receiveEpisodes(episodes) {
       console.log('TVEpisodes', episodes);
       // TODO(sjmiles): temporarily restrict to 6 items (avoid permutation problem in Multiplexer)
-      episodes = episodes.slice(0, 6);
+      //episodes = episodes.slice(0, 6);
       const episodesView = this._views.get('episodes');
       // semaphore to protect await block below
       this._setState({receiving: true});

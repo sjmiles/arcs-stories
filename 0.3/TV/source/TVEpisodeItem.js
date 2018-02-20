@@ -8,7 +8,7 @@
 
 "use strict";
 
-defineParticle(({DomParticle, resolver}) => {
+defineParticle(({DomParticle, resolver, log}) => {
 
   let host = `episode-item`;
 
@@ -36,6 +36,7 @@ defineParticle(({DomParticle, resolver}) => {
     }
     _render({episode}) {
       if (episode) {
+        log('rendering', episode.name);
         const model = episode.dataClone();
         if (!model.image) {
           model.image = resolver('TVEpisodeItem/../data/TV.png');

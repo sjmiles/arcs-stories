@@ -11,25 +11,18 @@ view PlaidAccounts of [PlaidAccount] in 'accounts.json'
 import 'PlaidTransaction.schema'
 view PlaidTransactions of [PlaidTransaction] in 'transactions.json'
 
-import 'https://$cdn/artifacts/Common/Detail.manifest'
-
-particle PlaidAccountsDetail in 'source/PlaidAccountsDetail.js'
-  PlaidAccountsDetail(in PlaidAccount selected, in [PlaidTransaction] transactions)
-  consume content
-
-particle PlaidAccountsList in 'source/PlaidAccountsList.js'
-  PlaidAccountsList(in [PlaidAccount] list, inout PlaidAccount selected)
-  consume root
-  description `show ${list}`
+import 'PlaidAccountsMasterDetail.manifest'
+import 'PlaidAccountsList.manifest'
+import 'PlaidAccountsDetail.manifest'
 
 recipe
   copy PlaidAccounts as accounts
   copy PlaidTransactions as transactions
   create as selected
+  PlaidAccountsMasterDetail
+    selected = selected
   PlaidAccountsList
     list <- accounts
-    selected = selected
-  DetailSlider
     selected = selected
   PlaidAccountsDetail
     selected <- selected

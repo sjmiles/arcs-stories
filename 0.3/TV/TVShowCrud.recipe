@@ -21,12 +21,14 @@ particle FindTVShows in 'source/FindTVShows.js'
   consume root
   description `find tv shows`
 
-particle TVShowList in 'https://$cdn/artifacts/Common/source/TileList.js'
-  TVShowList(inout [TVShow] items, inout TVShow selected)
-  consume root
-    provide set of item
-    provide set of action
-  description `see ${items}`
+import 'https://$cdn/artifacts/Common/List.manifest'
+
+//particle TVShowList in 'https://$cdn/artifacts/Common/source/TileList.js'
+//  TVShowList(inout [TVShow] items, inout TVShow selected)
+//  consume root
+//    provide set of item
+//    provide set of action
+//  description `see ${items}`
 
 // this file has to be separate to feed multiplexer (fix pending)
 import 'TVShowTile.manifest'
@@ -62,7 +64,7 @@ recipe
     theme = theme
   FindTVShows
     shows = shows
-  TVShowList
+  SelectableTileList
     items = shows
     selected = selected
     consume root as rootSlot

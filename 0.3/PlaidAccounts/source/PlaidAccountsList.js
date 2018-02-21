@@ -69,7 +69,7 @@ defineParticle(({DomParticle}) => {
         }
       };
     }
-    _onSelect(e, state) {
+    _onSelect(e) {
       this._views.get('selected').set(this._props.list[e.data.key]);
     }
   };

@@ -50,10 +50,10 @@ defineParticle(({DomParticle}) => {
     get template() {
       return template;
     }
-    _willReceiveProps(props) {
+    _willReceiveProps({selected, transactions}) {
       let items = null;
-      if (props.selected && props.transactions) {
-        items = props.transactions.filter(t => t.account == props.selected.id).map((t, i) => {
+      if (selected && transactions) {
+        items = transactions.filter(t => t.account == selected.rawData.id).map((t, i) => {
           return {
             index: i,
             name: t.name,
@@ -68,17 +68,14 @@ defineParticle(({DomParticle}) => {
     _shouldRender(props, state) {
       return Boolean(state.items);
     }
-    _render(props, state) {
+    _render({selected}, {items}) {
       return {
-        name: props.selected.metaName,
+        name: selected.metaName,
         accounts: {
           $template: 'transactions',
-          models: state.items
+          models: items
         }
       };
-    }
-    _onSelect(e) {
-      //this._views.get('selected').set(this._props.list[e.data.key]);
     }
   };
 

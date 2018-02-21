@@ -10,7 +10,7 @@
 
 defineParticle(({DomParticle}) => {
 
-  let host = 'plaid-accounts-detail';
+  let host = 'plaid-account-detail';
 
   let template = `
 <style>

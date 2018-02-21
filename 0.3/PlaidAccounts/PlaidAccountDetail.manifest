@@ -6,10 +6,9 @@
 // subject to an additional IP rights grant found at
 // http://polymer.github.io/PATENTS.txt
 
-import 'PlaidAccount.schema'
-import 'PlaidTransaction.schema'
+import 'data/PlaidAccount.schema'
+import 'data/PlaidTransaction.schema'
 
-particle PlaidAccountsDetail in 'source/PlaidAccountsDetail.js'
-  PlaidAccountsDetail(in PlaidAccount selected, in [PlaidTransaction] transactions)
-  consume detail
-  //description `account details`
+particle PlaidAccountDetail in 'source/PlaidAccountDetail.js'
+  PlaidAccountDetail(in PlaidAccount selected, in [PlaidTransaction] transactions)
+  consume content

@@ -5,32 +5,30 @@
 // subject to an additional IP rights grant found at
 // http://polymer.github.io/PATENTS.txt
 
-import 'PlaidAccount.schema'
-view PlaidAccounts of [PlaidAccount] in 'accounts.json'
-
-import 'PlaidTransaction.schema'
-view PlaidTransactions of [PlaidTransaction] in 'transactions.json'
-
+import 'https://$cdn/artifacts/Common/List.manifest'
 import 'https://$cdn/artifacts/Common/Detail.manifest'
 
-particle PlaidAccountsDetail in 'source/PlaidAccountsDetail.js'
-  PlaidAccountsDetail(in PlaidAccount selected, in [PlaidTransaction] transactions)
-  consume content
+import 'PlaidAccount.manifest'
+import 'PlaidAccountDetail.manifest'
 
-particle PlaidAccountsList in 'source/PlaidAccountsList.js'
-  PlaidAccountsList(in [PlaidAccount] list, inout PlaidAccount selected)
-  consume root
-  description `show ${list}`
+import 'data/PlaidAccount.schema'
+view PlaidAccounts of [PlaidAccount] in 'data/accounts.json'
+
+import 'data/PlaidTransaction.schema'
+view PlaidTransactions of [PlaidTransaction] in 'data/transactions.json'
 
 recipe
-  copy PlaidAccounts as accounts
-  copy PlaidTransactions as transactions
+  map PlaidAccounts as accounts
+  map PlaidTransactions as transactions
   create as selected
-  PlaidAccountsList
-    list <- accounts
+  SelectableList
+    items = accounts
     selected = selected
+  Multiplexer
+    list = accounts
+    hostedParticle = PlaidAccount
   DetailSlider
     selected = selected
-  PlaidAccountsDetail
-    selected <- selected
-    transactions <- transactions
+  PlaidAccountDetail
+    selected = selected
+    transactions = transactions

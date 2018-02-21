@@ -6,9 +6,18 @@
 // subject to an additional IP rights grant found at
 // http://polymer.github.io/PATENTS.txt
 
-import 'PlaidAccount.schema'
-
-particle PlaidAccountsList in 'source/PlaidAccountsList.js'
-  PlaidAccountsList(in [PlaidAccount] list, inout PlaidAccount selected)
-  consume master
-  description `show ${list}`
+schema PlaidAccount
+  normative
+    Text id
+    Text item
+    Text user
+    Text name
+  optional
+    Number balanceAvailable
+    Number balanceCurrent
+    Text institution_type
+    Text metaName
+    Text metaNumber
+    Number metaLimit
+    Text subtype
+    Text type

@@ -14,7 +14,9 @@ defineParticle(({DomParticle, resolver, html}) => {
 
   const template = html`
 <style>
-  [${host}] [description] p {
+  [${host}] {
+    padding: 16px;
+  }
   [${host}] [description] p {
     margin: 0;
   }

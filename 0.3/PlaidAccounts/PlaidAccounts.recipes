@@ -5,17 +5,26 @@
 // subject to an additional IP rights grant found at
 // http://polymer.github.io/PATENTS.txt
 
-import 'https://$cdn/artifacts/Common/List.manifest'
-import 'https://$cdn/artifacts/Common/Detail.manifest'
-
-import 'PlaidAccount.manifest'
-import 'PlaidAccountDetail.manifest'
-
 import 'data/PlaidAccount.schema'
 view PlaidAccounts of [PlaidAccount] in 'data/accounts.json'
 
 import 'data/PlaidTransaction.schema'
 view PlaidTransactions of [PlaidTransaction] in 'data/transactions.json'
+
+import 'https://$cdn/artifacts/Common/List.manifest'
+import 'https://$cdn/artifacts/Common/Detail.manifest'
+
+import 'PlaidAccountItem.manifest'
+import 'PlaidAccountDetail.manifest'
+
+recipe
+  map PlaidAccounts as accounts
+  map PlaidTransactions as transactions
+  List
+    items = accounts
+  ItemMultiplexer
+    list = accounts
+    hostedParticle = PlaidAccountItem
 
 recipe
   map PlaidAccounts as accounts
@@ -24,9 +33,20 @@ recipe
   SelectableList
     items = accounts
     selected = selected
-  Multiplexer
+  ItemMultiplexer
     list = accounts
-    hostedParticle = PlaidAccount
+    hostedParticle = PlaidAccountItem
+
+recipe
+  map PlaidAccounts as accounts
+  map PlaidTransactions as transactions
+  create as selected
+  SelectableList
+    items = accounts
+    selected = selected
+  ItemMultiplexer
+    list = accounts
+    hostedParticle = PlaidAccountItem
   DetailSlider
     selected = selected
   PlaidAccountDetail

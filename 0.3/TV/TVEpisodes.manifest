@@ -27,6 +27,6 @@ shape EpisodeItemShape
   EpisodeItemShape(in TVEpisode episode)
   consume item
 
-particle EpisodeMultiplexer in 'https://$cdn/artifacts/Common/source/Multiplexer.js'
-  EpisodeMultiplexer(host EpisodeItemShape hostedParticle, in [TVEpisode] list)
-  consume set of item
+//particle EpisodeMultiplexer in 'https://$cdn/artifacts/Common/source/Multiplexer.js'
+//  EpisodeMultiplexer(host EpisodeItemShape hostedParticle, in [TVEpisode] list)
+//  consume set of item

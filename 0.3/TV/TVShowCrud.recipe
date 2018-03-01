@@ -22,6 +22,7 @@ particle FindTVShows in 'source/FindTVShows.js'
   description `find tv shows`
 
 import 'https://$cdn/artifacts/Common/List.manifest'
+import 'https://$cdn/artifacts/Common/Detail.manifest'
 
 //particle TVShowList in 'https://$cdn/artifacts/Common/source/TileList.js'
 //  TVShowList(inout [TVShow] items, inout TVShow selected)
@@ -37,9 +38,9 @@ shape ShowItemShape
   ShowItemShape(in TVShow show)
   consume item
 
-particle ShowMultiplexer in 'https://$cdn/artifacts/Common/source/Multiplexer.js'
-  ShowMultiplexer(host ShowItemShape hostedParticle, in [TVShow] list)
-  consume set of item
+//particle ShowMultiplexer in 'https://$cdn/artifacts/Common/source/Multiplexer.js'
+//  ShowMultiplexer(host ShowItemShape hostedParticle, in [TVShow] list)
+//  consume set of item
 
 particle TVShowPanel in 'source/TVShowPanel.js'
   TVShowPanel(in TVShow show)
@@ -50,10 +51,10 @@ particle TVShowPanel in 'source/TVShowPanel.js'
 import 'TVEpisodes.manifest'
 import 'TVShowActionBar.manifest'
 
-particle DetailSlider in 'https://$cdn/artifacts/Common/source/DetailSlider.js'
-  DetailSlider(inout TVShow selected)
-  consume modal
-    provide content
+//particle DetailSlider in 'https://$cdn/artifacts/Common/source/DetailSlider.js'
+//  DetailSlider(inout TVShow selected)
+//  consume modal
+//   provide content
 
 recipe
   use #shelltheme as theme
@@ -68,11 +69,15 @@ recipe
     items = shows
     selected = selected
     consume root as rootSlot
-      provide item as showItemSlot
-  ShowMultiplexer
+      provide tile as tileSlot
+  //ShowMultiplexer
+  //  list = shows
+  //  hostedParticle = TVShowTile
+  //  consume item as showItemSlot
+  TileMultiplexer
     list = shows
     hostedParticle = TVShowTile
-    consume item as showItemSlot
+    consume tile as tileSlot
   DetailSlider
     selected = selected
     consume modal as modalSlot
@@ -92,7 +97,7 @@ recipe
     items = episodes
     consume episodes as episodeListSlot
       provide item as episodeItemSlot
-  EpisodeMultiplexer
+  ItemMultiplexer
     list = episodes
     hostedParticle = TVEpisodeItem
     consume item as episodeItemSlot

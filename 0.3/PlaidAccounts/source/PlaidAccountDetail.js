@@ -16,9 +16,10 @@ defineParticle(({DomParticle}) => {
 <style>
   [${host}] {
     font-size: 0.9em;
+    padding: 36px 16px 16px 16px;
   }
   [${host}] [section] {
-    padding: 8px;
+    padding: 8px 8px 8px 0;
   }
   [${host}] [item] {
     border-bottom: 1px dotted silver;
@@ -34,7 +35,7 @@ defineParticle(({DomParticle}) => {
 </style>
 
 <div ${host}>
-  <h3 style="padding: 8px;">{{name}}</h3>
+  <h3>{{name}}</h3>
   <div>{{accounts}}</div>
   <template transactions>
     <div item on-click="_onSelect" key="{{index}}">

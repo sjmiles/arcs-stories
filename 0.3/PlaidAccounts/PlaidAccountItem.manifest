@@ -7,6 +7,6 @@
 
 import 'data/PlaidAccount.schema'
 
-particle PlaidAccountItem in 'source/PlaidAccount.js'
+particle PlaidAccountItem in 'source/PlaidAccountItem.js'
   PlaidAccountItem(in PlaidAccount account)
   consume item

@@ -18,17 +18,8 @@ import 'PlaidAccountItem.manifest'
 import 'PlaidAccountDetail.manifest'
 
 recipe
-  map PlaidAccounts as accounts
-  map PlaidTransactions as transactions
-  List
-    items = accounts
-  ItemMultiplexer
-    list = accounts
-    hostedParticle = PlaidAccountItem
-
-recipe
-  map PlaidAccounts as accounts
-  map PlaidTransactions as transactions
+  copy PlaidAccounts as accounts
+  copy PlaidTransactions as transactions
   create as selected
   SelectableList
     items = accounts
@@ -36,19 +27,8 @@ recipe
   ItemMultiplexer
     list = accounts
     hostedParticle = PlaidAccountItem
-
-//recipe
-//  map PlaidAccounts as accounts
-//  map PlaidTransactions as transactions
-//  create as selected
-//  SelectableList
-//    items = accounts
-//    selected = selected
-//  ItemMultiplexer
-//    list = accounts
-//    hostedParticle = PlaidAccountItem
-//  DetailSlider
-//    selected = selected
-//  PlaidAccountDetail
-//    selected = selected
-//    transactions = transactions
+  DetailSlider
+    selected = selected
+  PlaidAccountDetail
+    selected = selected
+    transactions = transactions

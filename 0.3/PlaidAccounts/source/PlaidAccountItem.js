@@ -20,6 +20,7 @@ defineParticle(({DomParticle, html}) => {
     cursor: pointer;
     display: flex;
     align-items: center;
+    padding: 8px 16px;
   }
   [${host}] [section] {
     padding: 8px;
@@ -33,7 +34,7 @@ defineParticle(({DomParticle, html}) => {
 
   const template = html`
 ${styleSheet}
-<div ${host} section>
+<div ${host}>
   <span style="flex: 1;"><i class="material-icons">{{icon}}</i>&nbsp;<span style="vertical-align:middle;">{{name}}</span></span>
   <div balance section style="{{balanceStyle}}">$<span>{{balance}}</span></div>
 </div>

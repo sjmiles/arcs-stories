@@ -8,6 +8,8 @@
 
 "use strict";
 
+/* global defineParticle */
+
 defineParticle(({DomParticle, resolver, log}) => {
 
   let host = `episode-item`;

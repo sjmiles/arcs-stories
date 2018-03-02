@@ -8,7 +8,9 @@
 
 "use strict";
 
-defineParticle(({DomParticle, log}) => {
+/* global defineParticle */
+
+defineParticle(({DomParticle}) => {
 
   let host = `show-tile`;
 

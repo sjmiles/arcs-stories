@@ -8,7 +8,9 @@
 
 "use strict";
 
-defineParticle(({DomParticle, resolver, html}) => {
+/* global defineParticle */
+
+defineParticle(({DomParticle, html}) => {
 
   let host = `show-panel`;
 

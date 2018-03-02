@@ -8,6 +8,8 @@
 
 "use strict";
 
+/* global defineParticle */
+
 defineParticle(({DomParticle}) => {
   return class extends DomParticle {
     _update({theme}, state) {

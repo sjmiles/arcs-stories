@@ -8,43 +8,46 @@
 
 "use strict";
 
+/* global defineParticle, importScripts */
+
 defineParticle(({DomParticle, resolver, html}) => {
 
   importScripts(resolver('FindTVShows/TvMaze.js'));
+  /* global service */
 
-  let host = "find-tv-shows";
+  const host = "find-tv-shows";
 
-  let template = html`
-  <style>
-    [${host}] {
-      display: flex;
-      align-items: center;
-      padding: 8px 16px;
-    }
-    [${host}] i {
-      font-family: 'Material Icons';
-      font-size: 32px;
-      font-style: normal;
-      -webkit-font-feature-settings: 'liga';
-      -webkit-font-smoothing: antialiased;
-      vertical-align: middle;
-      cursor: pointer;
-    }
-    [${host}] input {
-      flex: 1;
-      font-size: 1.2em;
-      padding: 7px 16px;
-      margin: 0 8px;
-      border-radius: 16px;
-      border: none;
-      outline: none;
-    }
-  </style>
+  const template = html`
+<style>
+  [${host}] {
+    display: flex;
+    align-items: center;
+    padding: 8px 16px;
+  }
+  [${host}] i {
+    font-family: 'Material Icons';
+    font-size: 32px;
+    font-style: normal;
+    -webkit-font-feature-settings: 'liga';
+    -webkit-font-smoothing: antialiased;
+    vertical-align: middle;
+    cursor: pointer;
+  }
+  [${host}] input {
+    flex: 1;
+    font-size: 1.2em;
+    padding: 7px 16px;
+    margin: 0 8px;
+    border-radius: 16px;
+    border: none;
+    outline: none;
+  }
+</style>
 
-  <div ${host}>
-    <i>search</i>
-    <input placeholder="TV Show Search" on-change="_onChange">
-  </div>
+<div ${host}>
+  <i>search</i>
+  <input placeholder="TV Show Search" on-change="_onChange">
+</div>
 
   `.trim();
 

@@ -35,7 +35,7 @@ defineParticle(({DomParticle, html}) => {
   const template = html`
 ${styleSheet}
 <div ${host}>
-  <span style="flex: 1;"><i class="material-icons">{{icon}}</i>&nbsp;<span style="vertical-align:middle;">{{name}}</span></span>
+  <span style="flex: 1;"><icon class="material-icons">{{icon}}</icon>&nbsp;<span style="vertical-align:middle;">{{name}}</span></span>
   <div balance section style="{{balanceStyle}}">$<span>{{balance}}</span></div>
 </div>
     `.trim();

@@ -7,14 +7,13 @@
 //http://polymer.github.io/PATENTS.txt
 
 schema TVShow
- optional
-    Text showid
-    Text name
-    Text description
-    Text image
-    Text network
-    Text day
-    Text time
-    Boolean favorite
-    Boolean delete
+  Text showid
+  Text name
+  Text description
+  Text image
+  Text network
+  Text day
+  Text time
+  Boolean favorite
+  Boolean delete
 

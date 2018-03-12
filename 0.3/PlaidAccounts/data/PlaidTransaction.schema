@@ -7,27 +7,25 @@
 // http://polymer.github.io/PATENTS.txt
 
 schema PlaidTransaction
-  normative
-    Text account
-    Text id
-    Number amount
-    Text date
-    Text name
-  optional
-    Text metaLocationAddress
-    Text metaLocationCity
-    Text metaLocationState
-    Text metaLocationZip
-    Number metaLocationCoordinatesLat
-    Number metaLocationCoordinatesLon
-    Text pending
-    Text typePrimary
-    Text category0
-    Text category1
-    Text category2
-    Text category_id
-    Number scoreLocationAddress
-    Number scoreLocationCity
-    Number scoreLocationState
-    Number scoreLocationZip
-    Number scoreName
+  Text account
+  Text id
+  Number amount
+  Text date
+  Text name
+  Text metaLocationAddress
+  Text metaLocationCity
+  Text metaLocationState
+  Text metaLocationZip
+  Number metaLocationCoordinatesLat
+  Number metaLocationCoordinatesLon
+  Text pending
+  Text typePrimary
+  Text category0
+  Text category1
+  Text category2
+  Text category_id
+  Number scoreLocationAddress
+  Number scoreLocationCity
+  Number scoreLocationState
+  Number scoreLocationZip
+  Number scoreName

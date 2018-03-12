@@ -9,9 +9,8 @@
 import 'data/TVShow.schema'
 
 schema Theme
-  optional
-    Text mainBackground
-    Text mainColor
+  Text mainBackground
+  Text mainColor
 
 particle ShellTheme in 'source/ShellTheme.js'
   ShellTheme(inout Theme theme)

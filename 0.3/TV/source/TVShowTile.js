@@ -23,11 +23,11 @@ defineParticle(({DomParticle}) => {
     get template() {
       return template;
     }
-    // TODO(sjmiles): bad things happen if _shouldRender is enabled, run this by @mmandlis
-    //_shouldRender({show}) {
+    // TODO(sjmiles): bad things happen if shouldRender is enabled, run this by @mmandlis
+    //shouldRender({show}) {
     //  return Boolean(show);
     //}
-    _render({show}) {
+    render({show}) {
       if (show) {
         return {
           image: {backgroundImage: `url("${show.image}")`}

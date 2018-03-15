@@ -12,12 +12,12 @@
 
 defineParticle(({DomParticle}) => {
   return class extends DomParticle {
-    _update({theme}, state) {
+    update({theme}, state) {
       if (theme && !state.initialized) {
         state.initialized = true;
         theme.mainBackground = '#333333';
         theme.mainColor = 'white';
-        this._views.get('theme').set(theme);
+        this.handles.get('theme').set(theme);
       }
     }
   };

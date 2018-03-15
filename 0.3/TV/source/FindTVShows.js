@@ -46,7 +46,7 @@ defineParticle(({DomParticle, resolver, html}) => {
 
 <div ${host}>
   <i>search</i>
-  <input placeholder="TV Show Search" on-change="_onChange">
+  <input placeholder="TV Show Search" on-change="onChange">
 </div>
 
   `.trim();
@@ -55,23 +55,23 @@ defineParticle(({DomParticle, resolver, html}) => {
     get template() {
       return template;
     }
-    _onChange(e) {
-      this._setState({query: e.data.value || '', count: 0});
+    onChange(e) {
+      this.setState({query: e.data.value || '', count: 0});
     }
-    _update(props, state) {
+    update(props, state) {
       if (props.shows && state.query && !state.count) {
-        this._fetchShows(state.query);
+        this.fetchShows(state.query);
       }
     }
-    async _fetchShows(query) {
-      this._setState({count: -1});
+    async fetchShows(query) {
+      this.setState({count: -1});
       let response = await fetch(`${service}/search/shows?q=${query}`);
       let shows = await response.json();
-      this._receiveShows(shows);
+      this.receiveShows(shows);
     }
-    async _receiveShows(shows) {
+    async receiveShows(shows) {
       console.log('TVShows', shows);
-      let showsView = this._views.get('shows');
+      let showsView = this.handles.get('shows');
       // clear old data
       //let entities = await showsView.toList();
       //entities.forEach(e => showsView.remove(e));

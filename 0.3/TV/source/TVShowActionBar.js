@@ -14,12 +14,12 @@ defineParticle(({DomParticle}) => {
 
   const template = `
     <div [${host}] style="margin: 4px 0; text-align: right; font-size: 24px;">
-      <i class="material-icons" on-click="_onFavorite">{{favorite}}</i>
+      <icon on-click="onFavorite">{{favorite}}</icon>
       <!--
       <i class="material-icons">share</i>
       <i class="material-icons">playlist_play</i>
       -->
-      <i class="material-icons" on-click="_onDelete">delete</i>
+      <icon class="material-icons" on-click="onDelete">delete</icon>
     </div>
   `.trim();
 
@@ -27,32 +27,32 @@ defineParticle(({DomParticle}) => {
     get template() {
       return template;
     }
-    _render({show}) {
+    render({show}) {
       return {
         favorite: show && show.favorite ? `favorite` : `favorite_border`
       };
     }
-    _setShowFlags(flags) {
+    setShowFlags(flags) {
       const show = this._props.show;
       for (let flag in flags) {
         show[flag] = flags[flag];
       }
       //
-      this._views.get('show').set(show);
+      this.handles.get('show').set(show);
       //
       /*
-      const showHandle = this._views.get('show');
+      const showHandle = this.handles.get('show');
       let Show = showHandle.entityClass;
       let entity = new Show(show.rawData);
       showHandle.set(entity);
       */
     }
-    _onDelete() {
-      this._setShowFlags({delete: true});
+    onDelete() {
+      this.setShowFlags({delete: true});
     }
-    _onFavorite() {
+    onFavorite() {
       console.log("TVShowActionBar: toggle favorite to ", !this._props.show.favorite);
-      this._setShowFlags({favorite: !this._props.show.favorite});
+      this.setShowFlags({favorite: !this._props.show.favorite});
     }
   };
 });

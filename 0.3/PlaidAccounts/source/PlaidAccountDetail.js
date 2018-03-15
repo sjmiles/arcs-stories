@@ -51,7 +51,7 @@ defineParticle(({DomParticle}) => {
     get template() {
       return template;
     }
-    _willReceiveProps({selected, transactions}) {
+    willReceiveProps({selected, transactions}) {
       let items = null;
       if (selected && transactions) {
         items = transactions.filter(t => t.account == selected.rawData.id).map((t, i) => {
@@ -66,10 +66,10 @@ defineParticle(({DomParticle}) => {
       }
       this._setState({items});
     }
-    _shouldRender(props, state) {
+    shouldRender(props, state) {
       return Boolean(state.items);
     }
-    _render({selected}, {items}) {
+    render({selected}, {items}) {
       return {
         name: selected.metaName,
         accounts: {

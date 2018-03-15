@@ -1,10 +1,5 @@
 import 'https://$cdn/artifacts/Common/List.manifest'
 
-particle GenericItem in 'source/GenericItem.js'
-  GenericItem(in ~a item)
-  consume item
-  description `dump an Entity as JSON`
-
 particle GenericThing in 'source/GenericItem.js'
   GenericThing(in [~a] item)
   consume root
@@ -14,6 +9,13 @@ recipe
   map #BOXED_posts as items
   GenericThing
     item = items
+
+//
+
+particle GenericItem in 'source/GenericItem.js'
+  GenericItem(in ~a item)
+  consume item
+  description `dump an Entity as JSON`
 
 recipe
   map #BOXED_posts as items

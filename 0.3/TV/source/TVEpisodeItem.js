@@ -36,7 +36,7 @@ defineParticle(({DomParticle, resolver, log}) => {
     get template() {
       return template;
     }
-    _render({episode}) {
+    render({episode}) {
       if (episode) {
         log('rendering', episode.name);
         const model = episode.dataClone();

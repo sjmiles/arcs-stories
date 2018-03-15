@@ -43,10 +43,10 @@ defineParticle(({DomParticle, html}) => {
     get template() {
       return template;
     }
-    _shouldRender(props) {
+    shouldRender(props) {
       return props.show;
     }
-    _render({show}) {
+    render({show}) {
       return {
         image: show.image,
         description: show.description,

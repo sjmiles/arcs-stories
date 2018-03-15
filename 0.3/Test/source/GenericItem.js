@@ -32,10 +32,10 @@ ${styleSheet}
     get template() {
       return template;
     }
-    _shouldRender({item}) {
+    shouldRender({item}) {
       return Boolean(item);
     }
-    _render({item}) {
+    render({item}) {
       let json;
       if (item.length) {
         json = item.map(i => JSON.stringify(i.dataClone(), null, '  ')).join('\n')

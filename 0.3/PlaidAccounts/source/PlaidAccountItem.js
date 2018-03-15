@@ -9,7 +9,7 @@
 
 "use strict";
 
-defineParticle(({DomParticle, html}) => {
+defineParticle(({DomParticle, html, log}) => {
 
   const host = 'plaid-account';
 
@@ -44,10 +44,11 @@ ${styleSheet}
     get template() {
       return template;
     }
-    _shouldRender({account}) {
+    shouldRender({account}) {
+      log(account);
       return Boolean(account);
     }
-    _render({account}) {
+    render({account}) {
       return {
         name: account.metaName,
         icon: account.type == "credit" ? `credit_card` : `account_balance`,

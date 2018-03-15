@@ -21,7 +21,7 @@ recipe
 particle GitHubDash in 'source/GitHubDash.js'
   GitHubDash(in GitHubHandle ghHandle)
   consume root
-  description `GitHub Dashboard`
+  description `GitHub Dashboard for ${ghHandle.name}`
 
 recipe
   map #PROFILE_git_hub_handle as ghHandle

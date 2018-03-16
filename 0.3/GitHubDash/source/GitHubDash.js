@@ -15,7 +15,7 @@ defineParticle(({DomParticle, html, log}) => {
   let template = html`
 <style>
   [${host}] {
-    padding: 28px;
+    padding: 0 28px;
   }
   [${host}] [pr] {
     font-size: 1.05em;
@@ -26,7 +26,7 @@ defineParticle(({DomParticle, html, log}) => {
 
 <div ${host}>
 
-  <h3>GitHub Dashboard</h3>
+  <h3>PolymerLabs::Arcs Dashboard</h3>
   <div pr>Pull Requests Pending Review by <b>{{name}}</b></div>
   <div>{{requests}}</div>
 
@@ -46,43 +46,35 @@ defineParticle(({DomParticle, html, log}) => {
     get template() {
       return template;
     }
-    // constructor() {
-    //   super();
-    //   this._invalidate();
-    // }
-    // shouldRender() {
-    //   console.warn('shouldRender is called!');
-    //   return true;
-    // }
-    // setViews(...args) {
-    //   console.warn('setViews is called!');
-    //   super.setViews(...args);
-    // }
-    render({ghHandle}, {data}) {
-      if (!data) {
-        this.fetchData();
-      } else if (ghHandle) {
-        let requests;
-        const name = ghHandle.name;
-        const models = this.dataToModels(data, name);
-        if (models.length) {
-          requests = {
-            $template: 'request',
-            models
-          };
-        } else {
-          requests = 'All caught up!';
-        }
-        return {
-          name,
-          requests
-        };
+    render({ghHandle}, {prs, issues}) {
+      if (!prs) {
+        this.fetchPRs();
       }
+      if (!issues) {
+        //this.fetchIssues();
+      }
+      const model = {};
+      if (ghHandle) {
+        model.name = ghHandle.name;
+        if (prs) {
+          const name = ghHandle.name;
+          const models = this.dataToModels(prs, name);
+          if (models.length) {
+            model.requests = {
+              $template: 'request',
+              models
+            };
+          } else {
+            model.requests = 'All caught up!';
+          }
+        }
+      }
+      return model;
     }
-    async fetchData() {
-      const response = await fetch(`${service}`);
-      const data = await response.json();
-      this.setState({data});
+    async fetchPRs() {
+      const response = await fetch(`${service}/repos/PolymerLabs/arcs/pulls`);
+      const prs = await response.json();
+      this.setState({prs});
     }
     dataToModels(data, user) {
       log(user, data);

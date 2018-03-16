@@ -24,15 +24,6 @@ defineParticle(({DomParticle, resolver, html}) => {
     align-items: center;
     padding: 8px 16px;
   }
-  [${host}] i {
-    font-family: 'Material Icons';
-    font-size: 32px;
-    font-style: normal;
-    -webkit-font-feature-settings: 'liga';
-    -webkit-font-smoothing: antialiased;
-    vertical-align: middle;
-    cursor: pointer;
-  }
   [${host}] input {
     flex: 1;
     font-size: 1.2em;
@@ -45,8 +36,9 @@ defineParticle(({DomParticle, resolver, html}) => {
 </style>
 
 <div ${host}>
-  <i>search</i>
-  <input placeholder="TV Show Search" on-change="onChange">
+  <icon>search</icon>
+  <input placeholder="TV Show Search" on-change="onChange" value="{{searchText}}">
+  <speech-input on-result="onResult" on-end="onEnd"></speech-input>
 </div>
 
   `.trim();
@@ -55,13 +47,28 @@ defineParticle(({DomParticle, resolver, html}) => {
     get template() {
       return template;
     }
+    onResult(e) {
+      const searchText = e.data.value;
+      this._setState({searchText});
+    }
+    onEnd(e) {
+      const searchText = e.data.value;
+      this._setState({searchText});
+      this.commit(searchText);
+    }
     onChange(e) {
-      this.setState({query: e.data.value || '', count: 0});
+      this.commit(e.data.value);
+    }
+    commit(text) {
+      this.setState({query: text || '', count: 0});
     }
     update(props, state) {
       if (props.shows && state.query && !state.count) {
         this.fetchShows(state.query);
       }
+    }
+    render(props, state) {
+      return state;
     }
     async fetchShows(query) {
       this.setState({count: -1});

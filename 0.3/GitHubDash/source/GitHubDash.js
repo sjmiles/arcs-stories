@@ -41,7 +41,7 @@ defineParticle(({DomParticle, html, log}) => {
 </div>
     `.trim();
 
-  const service = `http://xenonjs.com/services/http/php/github.php`;
+  const service = `https://xenonjs.com/services/http/php/github.php`;
 
   return class extends DomParticle {
     get template() {

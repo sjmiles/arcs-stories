@@ -26,7 +26,8 @@ defineParticle(({DomParticle, html, log}) => {
 
 <div ${host}>
 
-  <h3>PolymerLabs::Arcs Dashboard</h3>
+  <h3>GitHub Dashboard</h3>
+  <h4>PolymerLabs/Arcs</h4>
   <div pr>Pull Requests Pending Review by <b>{{name}}</b></div>
   <div>{{requests}}</div>
 
@@ -53,7 +54,8 @@ defineParticle(({DomParticle, html, log}) => {
       if (!issues) {
         //this.fetchIssues();
       }
-      const model = {};
+      const model = {
+      };
       if (ghHandle) {
         model.name = ghHandle.name;
         if (prs) {

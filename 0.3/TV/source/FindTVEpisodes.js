@@ -36,6 +36,9 @@ defineParticle(({DomParticle, resolver}) => {
       this.receiveEpisodes(episodes);
     }
     async receiveEpisodes(episodes) {
+      // TODO(sjmiles): clip for performance
+      // ... switch to Season/Episode view instead when possible
+      episodes = episodes.slice(0, 30);
       console.log('TVEpisodes', episodes);
       const episodesView = this.handles.get('episodes');
       // semaphore to protect await block below

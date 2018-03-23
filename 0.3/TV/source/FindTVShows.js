@@ -10,7 +10,7 @@
 
 /* global defineParticle, importScripts */
 
-defineParticle(({DomParticle, resolver, html}) => {
+defineParticle(({DomParticle, resolver, html, log}) => {
 
   importScripts(resolver('FindTVShows/TvMaze.js'));
   /* global service */
@@ -36,7 +36,7 @@ defineParticle(({DomParticle, resolver, html}) => {
 </style>
 
 <div ${host}>
-  <icon>search</icon>
+  <icon trigger="search" on-click="onSearchTrigger">search</icon>
   <input placeholder="TV Show Search" on-change="onChange" value="{{searchText}}">
   <speech-input on-result="onResult" on-end="onEnd"></speech-input>
 </div>
@@ -52,6 +52,11 @@ defineParticle(({DomParticle, resolver, html}) => {
       this._setState({searchText});
     }
     onEnd(e) {
+      const searchText = e.data.value;
+      this._setState({searchText});
+      this.commit(searchText);
+    }
+    onSearchTrigger(e) {
       const searchText = e.data.value;
       this._setState({searchText});
       this.commit(searchText);

@@ -15,11 +15,7 @@ defineParticle(({DomParticle}) => {
   const template = `
     <div [${host}] style="margin: 4px 0; text-align: right; font-size: 24px;">
       <icon on-click="onFavorite">{{favorite}}</icon>
-      <!--
-      <i class="material-icons">share</i>
-      <i class="material-icons">playlist_play</i>
-      -->
-      <icon class="material-icons" on-click="onDelete">delete</icon>
+      <icon trigger="delete" class="material-icons" on-click="onDelete">delete</icon>
     </div>
   `.trim();
 

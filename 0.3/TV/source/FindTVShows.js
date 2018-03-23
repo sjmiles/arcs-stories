@@ -36,7 +36,7 @@ defineParticle(({DomParticle, resolver, html, log}) => {
 </style>
 
 <div ${host}>
-  <icon trigger="search" on-click="onSearchTrigger">search</icon>
+  <icon trigger="find show" on-click="onSearchTrigger">search</icon>
   <input placeholder="TV Show Search" on-change="onChange" value="{{searchText}}">
   <speech-input on-result="onResult" on-end="onEnd"></speech-input>
 </div>

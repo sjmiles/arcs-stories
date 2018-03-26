@@ -91,17 +91,19 @@ defineParticle(({DomParticle, resolver, html, log}) => {
       let Show = showsView.entityClass;
       shows.forEach(show => {
         show = show.show;
-        let entity = new Show({
-          showid: String(show.id),
-          name: show.name,
-          description: show.summary,
-          image: show.image && show.image.medium.replace('http:', 'https:') || '',
-          network: show.network && show.network.name || show.webChannel && show.webChannel.name || '',
-          day: show.schedule && show.schedule.days && show.schedule.days.shift() || '',
-          time: show.schedule && show.schedule.time
-        });
-        //console.log('TVShows', JSON.stringify(entity.dataClone(), null, '  '));
-        showsView.store(entity);
+        if (show.image && show.image.medium) {
+          let entity = new Show({
+            showid: String(show.id),
+            name: show.name,
+            description: show.summary,
+            image: show.image && show.image.medium.replace('http:', 'https:') || '',
+            network: show.network && show.network.name || show.webChannel && show.webChannel.name || '',
+            day: show.schedule && show.schedule.days && show.schedule.days.shift() || '',
+            time: show.schedule && show.schedule.time
+          });
+          //console.log('TVShows', JSON.stringify(entity.dataClone(), null, '  '));
+          showsView.store(entity);
+        }
       });
     }
   };

@@ -45,7 +45,7 @@ ${styleSheet}
       return template;
     }
     shouldRender({account}) {
-      log(account);
+      //account && log(account);
       return Boolean(account);
     }
     render({account}) {

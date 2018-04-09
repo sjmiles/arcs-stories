@@ -5,22 +5,20 @@ particle GenericThing in 'source/GenericItem.js'
   consume root
   description `dump any Handle as JSON`
 
-recipe
-  map #BOXED_posts as items
-  GenericThing
-    item = items
-
-//
+//recipe
+//  map #BOXED_posts as items
+//  GenericThing
+//    item = items
 
 particle GenericItem in 'source/GenericItem.js'
   GenericItem(in ~a item)
   consume item
   description `dump an Entity as JSON`
 
-recipe
-  map #BOXED_posts as items
-  List
-    items = items
-  ItemMultiplexer
-    list = items
-    hostedParticle = GenericItem
+//recipe
+//  map #BOXED_posts as items
+// List
+//    items = items
+//  ItemMultiplexer
+//    list = items
+//    hostedParticle = GenericItem

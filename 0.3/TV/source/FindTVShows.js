@@ -23,6 +23,7 @@ defineParticle(({DomParticle, resolver, html, log}) => {
     display: flex;
     align-items: center;
     padding: 8px 16px;
+    background-color: #333333;
   }
   [${host}] input {
     flex: 1;

@@ -11,6 +11,8 @@ import 'data/TVShow.schema'
 schema Theme
   Text mainBackground
   Text mainColor
+  Text title
+  Text key
 
 particle ShellTheme in 'source/ShellTheme.js'
   ShellTheme(inout Theme theme)
@@ -23,23 +25,12 @@ particle FindTVShows in 'source/FindTVShows.js'
 import 'https://$cdn/artifacts/Common/List.manifest'
 import 'https://$cdn/artifacts/Common/Detail.manifest'
 
-//particle TVShowList in 'https://$cdn/artifacts/Common/source/TileList.js'
-//  TVShowList(inout [TVShow] items, inout TVShow selected)
-//  consume root
-//    provide set of item
-//    provide set of action
-//  description `see ${items}`
-
 // this file has to be separate to feed multiplexer (fix pending)
 import 'TVShowTile.manifest'
 
 shape ShowItemShape
   ShowItemShape(in TVShow show)
   consume item
-
-//particle ShowMultiplexer in 'https://$cdn/artifacts/Common/source/Multiplexer.js'
-//  ShowMultiplexer(host ShowItemShape hostedParticle, in [TVShow] list)
-//  consume set of item
 
 particle TVShowPanel in 'source/TVShowPanel.js'
   TVShowPanel(in TVShow show)
@@ -49,11 +40,6 @@ particle TVShowPanel in 'source/TVShowPanel.js'
 
 import 'TVEpisodes.manifest'
 import 'TVShowActionBar.manifest'
-
-//particle DetailSlider in 'https://$cdn/artifacts/Common/source/DetailSlider.js'
-//  DetailSlider(inout TVShow selected)
-//  consume modal
-//   provide content
 
 recipe
   use #shelltheme as theme
@@ -69,10 +55,6 @@ recipe
     selected = selected
     consume root as rootSlot
       provide tile as tileSlot
-  //ShowMultiplexer
-  //  list = shows
-  //  hostedParticle = TVShowTile
-  //  consume item as showItemSlot
   TileMultiplexer
     list = shows
     hostedParticle = TVShowTile

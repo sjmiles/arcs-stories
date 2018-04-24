@@ -8,6 +8,7 @@
 
 schema GitHubHandle
   String name
+  String owner
 
 particle GitHubHandlePicker in 'source/GitHubHandlePicker.js'
   GitHubHandlePicker(inout GitHubHandle handle)

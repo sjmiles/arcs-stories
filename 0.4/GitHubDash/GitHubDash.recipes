@@ -10,7 +10,7 @@ schema GitHubHandle
   Text owner
 
 particle GitHubHandlePicker in 'source/GitHubHandlePicker.js'
-  GitHubHandlePicker(inout GitHubHandle ghHandle)
+  inout GitHubHandle ghHandle
   consume root
   description `provide github user-name`
 
@@ -20,9 +20,10 @@ recipe
     ghHandle = ghHandle
 
 particle GitHubDash in 'source/GitHubDash.js'
-  GitHubDash(in GitHubHandle ghHandle)
+  in GitHubHandle ghHandle
   consume root
   description `GitHub Dashboard for ${ghHandle.name}`
+    //ghHandle `GitHub Username`
 
 recipe
   //map #git_hub_handle as ghHandle

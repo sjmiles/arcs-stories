@@ -1,0 +1,14 @@
+particle DetailSlider in 'https://$cdn/artifacts/Common/source/DetailSlider.js'
+  inout ~a selected
+  consume modal
+    provide content
+  //description `popup information container (using ${selected})`
+
+recipe DetailSlider
+  use as selected
+  DetailSlider
+    selected = selected
+    consume modal as modalSlot
+      provide content as contentSlot
+  description `popup information container (using ${DetailSlider.selected})`
+  

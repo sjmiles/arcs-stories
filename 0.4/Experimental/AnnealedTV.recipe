@@ -1,3 +1,6 @@
 import '/projects/arcs/arcs/shell/artifacts/Arcs/Arcs.recipes'
-import 'FindTVShows.recipe'
-import 'DisplayTVShows.recipe'
+
+import 'TVShowFind.recipe'
+import 'TVShowTiles.recipe'
+import 'TVShowDetailSlider.recipe'
+import 'TVShowDetail.recipe'

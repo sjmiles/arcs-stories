@@ -17,7 +17,6 @@ import '../TV/data/TVShow.schema'
 //---------------------------------
 
 import 'https://$cdn/artifacts/Common/List.manifest'
-//import 'https://$cdn/artifacts/Common/Detail.manifest'
 
 //---------------------------------
 // TVShowTile
@@ -36,13 +35,13 @@ particle TVShowTile in '../TV/source/TVShowTile.js'
 
 recipe ShowTVTiles
   use #shows as shows
-  create as selected
+  create #selected as selected
   SelectableTileList
     items = shows
     selected = selected
     consume root
       provide tile
-//  TileMultiplexer
-//    list = shows
-//    hostedParticle = TVShowTile
-//    consume tile
+  TileMultiplexer
+    list = shows
+    hostedParticle = TVShowTile
+    consume tile

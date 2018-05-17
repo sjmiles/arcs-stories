@@ -1,0 +1,9 @@
+recipe TVShowPanel
+  //---------------------------------
+  // TVShow Detail Content Renderer
+  //---------------------------------
+  TVShowPanel
+    show = selected
+    consume content as contentSlot
+      provide action as panelActionSlot
+      provide episodes as episodeListSlot

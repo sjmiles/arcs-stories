@@ -6,10 +6,10 @@
 # http://polymer.github.io/PATENTS.txt
 
 import 'PlaidAccount.schema'
-view PlaidAccounts of [PlaidAccount] in 'accounts.json'
+store PlaidAccounts of [PlaidAccount] in 'accounts.json'
 
 import 'PlaidTransaction.schema'
-view PlaidTransactions of [PlaidTransaction] in 'transactions.json'
+store PlaidTransactions of [PlaidTransaction] in 'transactions.json'
 
 import 'PlaidAccountsMasterDetail.manifest'
 import 'PlaidAccountsList.manifest'

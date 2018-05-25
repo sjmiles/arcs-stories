@@ -8,7 +8,7 @@
 import 'https://$cdn/artifacts/Products/Chooser.manifest'
 import 'https://$cdn/artifacts/Products/ShowProducts.manifest'
 
-view WishlistCandidates of [Product] in 'data/wishlist_candidates.json'
+store WishlistCandidates of [Product] in 'data/wishlist_candidates.json'
   description `wishlist candidates`
 
 # Make a wish

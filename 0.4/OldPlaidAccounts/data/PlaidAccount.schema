@@ -6,5 +6,16 @@
 // subject to an additional IP rights grant found at
 // http://polymer.github.io/PATENTS.txt
 
-import 'PlaidAccountData.recipe'
-import 'PlaidAccountItem.recipe'
+schema PlaidAccount
+  Text id
+  Text item
+  Text user
+  Text name
+  Number balanceAvailable
+  Number balanceCurrent
+  Text institution_type
+  Text metaName
+  Text metaNumber
+  Number metaLimit
+  Text subtype
+  Text type

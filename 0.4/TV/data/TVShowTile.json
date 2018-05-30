@@ -1,0 +1,81 @@
+{
+  "args": [
+    {
+      "type": {
+        "tag": "Entity",
+        "data": {
+          "names": [
+            "TVShow"
+          ],
+          "fields": {
+            "showid": "Text",
+            "name": "Text",
+            "description": "Text",
+            "image": "Text",
+            "network": "Text",
+            "day": "Text",
+            "time": "Text",
+            "favorite": "Boolean",
+            "delete": "Boolean"
+          }
+        }
+      },
+      "direction": "in",
+      "name": "show",
+      "isOptional": false,
+      "dependentConnections": []
+    }
+  ],
+  "name": "TVShowTile",
+  "verbs": [],
+  "description": {},
+  "implFile": "/projects/arcs/arcs-stories/0.4/TV/source/TVShowTile.js",
+  "affordance": [
+    "dom",
+    "mock"
+  ],
+  "slots": [
+    {
+      "kind": "particle-slot",
+      "location": {
+        "start": {
+          "offset": 909,
+          "line": 34,
+          "column": 3
+        },
+        "end": {
+          "offset": 1044,
+          "line": 41,
+          "column": 1
+        }
+      },
+      "name": "item",
+      "tags": [],
+      "isRequired": false,
+      "isSet": false,
+      "formFactor": null,
+      "providedSlots": [
+        {
+          "kind": "provided-slot",
+          "location": {
+            "start": {
+              "offset": 926,
+              "line": 35,
+              "column": 5
+            },
+            "end": {
+              "offset": 1044,
+              "line": 41,
+              "column": 1
+            }
+          },
+          "name": "action",
+          "tags": [],
+          "isSet": true,
+          "formFactor": null,
+          "handles": []
+        }
+      ]
+    }
+  ]
+}

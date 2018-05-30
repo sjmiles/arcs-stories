@@ -1,0 +1,2 @@
+import 'GenericList.recipe'
+import 'GenericDetailSlider.recipe'

@@ -1,0 +1,82 @@
+resource Store1Resource
+  start
+  [{"$id":"!931272186308192:app-shell-gvsv92dunsc5zzonc:0:inner:2","day":"","description":"<p>The Legion of Extraordinary Dancers, also known as The LXD, is a web series about two groups of rival dancers: heroes (The League of Extraordinary Dancers) and villains (The Alliance of the Dark) who discover they have superpowers, referred to as "the ra", through their dance abilities.</p>","image":"https://static.tvmaze.com/uploads/images/medium_portrait/30/75278.jpg","name":"The Legion of Extraordinary Dancers","network":"Hulu","showid":"8398","time":""}]
+
+resource Store2Resource
+  start
+  [{"args":[{"type":{"tag":"Entity","data":{"names":["TVShow"],"fields":{"showid":"Text","name":"Text","description":"Text","image":"Text","network":"Text","day":"Text","time":"Text","favorite":"Boolean","delete":"Boolean"}}},"direction":"in","name":"show","isOptional":false,"dependentConnections":[]}],"name":"TVShowTile","verbs":[],"description":{},"implFile":"/projects/arcs/arcs-stories/0.4/Experimental/../TV/source/TVShowTile.js","affordance":["dom","mock"],"slots":[{"kind":"particle-slot","location":{"start":{"offset":593,"line":18,"column":3},"end":{"offset":633,"line":21,"column":1}},"name":"item","tags":[],"isRequired":false,"isSet":false,"formFactor":null,"providedSlots":[{"kind":"provided-slot","location":{"start":{"offset":610,"line":19,"column":5},"end":{"offset":633,"line":21,"column":1}},"name":"action","tags":[],"isSet":true,"formFactor":null,"handles":[]}]}]}]
+
+shape HostedParticleShape
+  in TVShow {Text showid, Text name, Text description, Text image, Text network, Text day, Text time, Boolean favorite, Boolean delete} *
+  consume item
+
+particle FindTVShows in '../TV/source/FindTVShows.js'
+  inout [TVShow {Text showid, Text name, Text description, Text image, Text network, Text day, Text time, Boolean favorite, Boolean delete}] shows
+  affordance dom
+  consume root
+  description `find tv shows`
+
+particle SelectableTileList in 'https://$cdn/artifacts/Common/source/TileList.js'
+  inout [~a] items
+  inout ~a selected
+  affordance dom
+  consume root
+    provide set of tile
+    provide set of action
+  description `show tiled ${items}`
+
+particle TileMultiplexer in 'https://$cdn/artifacts/Common/source/Multiplexer.js'
+  host HostedParticleShape hostedParticle
+  in [~a] list
+  affordance dom
+  consume set of tile
+
+particle DetailSlider in 'https://$cdn/artifacts/Common/source/DetailSlider.js'
+  inout ~a selected
+  affordance dom
+  consume modal
+    provide content
+  description `popup information container (using ${selected})`
+
+particle TVShowPanel in '../TV/source/TVShowPanel.js'
+  in TVShow {Text showid, Text name, Text description, Text image, Text network, Text day, Text time, Boolean favorite, Boolean delete} show
+  affordance dom
+  consume content
+    provide action
+    provide episodes
+  description `${show} details`
+
+recipe
+
+  ? #shows as view0 // [TVShow {Text showid, Text name, Text description, Text image, Text network, Text day, Text time, Boolean favorite, Boolean delete}]
+
+  ? #selected as view1 // TVShow {Text showid, Text name, Text description, Text image, Text network, Text day, Text time, Boolean favorite, Boolean delete}
+
+  use as view2 // HostedParticleShape
+
+  FindTVShows as particle0
+    shows = view0
+    consume root as slot0
+
+  SelectableTileList as particle1
+    items = view0
+    selected = view1
+    consume root as slot0
+      provide action as slot1
+      provide tile as slot2
+
+  TileMultiplexer as particle2
+    hostedParticle = view2
+    list <- view0
+    consume tile as slot2
+
+  DetailSlider as particle3
+    selected = view1
+    consume modal as slot3
+      provide content as slot4
+
+  TVShowPanel as particle4
+    show <- view1
+    consume content as slot4
+      provide action as slot5
+      provide episodes as slot6

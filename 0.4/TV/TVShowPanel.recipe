@@ -1,0 +1,20 @@
+//-------------------------------
+// TVShow Detail Content Renderer
+//-------------------------------
+
+import './data/TVShow.schema'
+
+particle TVShowPanel in './source/TVShowPanel.js'
+  in TVShow show
+  consume content
+    provide action
+    provide episodes
+  description `${show} details`
+
+recipe TVShowPanel
+  use #selected as selected
+  TVShowPanel
+    show = selected
+    consume content
+      provide action
+      provide episodes

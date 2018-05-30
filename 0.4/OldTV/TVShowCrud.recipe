@@ -45,12 +45,8 @@ import 'data/TVShow.schema'
 
 particle TVShowTile in 'source/TVShowTile.js'
   in TVShow show
-  consume item
+  consume tile
     provide set of action
-
-shape ShowItemShape
-  in TVShow show
-  consume item
 
 particle TVShowPanel in 'source/TVShowPanel.js'
   in TVShow show

@@ -6,5 +6,8 @@
 // subject to an additional IP rights grant found at
 // http://polymer.github.io/PATENTS.txt
 
-import 'PlaidAccountData.recipe'
-import 'PlaidAccountItem.recipe'
+import 'PlaidAccount.schema'
+view PlaidAccounts of [PlaidAccount] in 'accounts.json'
+
+import 'PlaidTransaction.schema'
+view PlaidTransactions of [PlaidTransaction] in 'transactions.json'

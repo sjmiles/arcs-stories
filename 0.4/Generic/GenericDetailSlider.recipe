@@ -8,5 +8,3 @@ recipe DetailSlider
   use #selected as selected
   DetailSlider
     selected = selected
-    consume modal as modalSlot
-      provide content as contentSlot

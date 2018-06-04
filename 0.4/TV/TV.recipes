@@ -9,3 +9,6 @@
 import 'TVShowFind.recipe'
 import 'TVShowTile.recipe'
 import 'TVShowPanel.recipe'
+import 'TVEpisodeFind.recipe'
+import 'TVEpisodeItem.recipe'
+

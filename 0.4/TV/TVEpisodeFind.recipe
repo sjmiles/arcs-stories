@@ -1,0 +1,14 @@
+import 'data/TVShow.schema'
+import 'data/TVEpisode.schema'
+
+particle FindTVEpisodes in 'source/TVEpisodeFind.js'
+  in TVShow show
+  inout [TVEpisode] episodes
+  description `find TV episodes`
+
+recipe FindTVEpisodes
+  use #selected as show
+  create #items #episodes as episodes
+  FindTVEpisodes
+    show = show
+    episodes = episodes

@@ -8,3 +8,4 @@ recipe DetailSlider
   use #selected as selected
   DetailSlider
     selected = selected
+  description `popup detail information`

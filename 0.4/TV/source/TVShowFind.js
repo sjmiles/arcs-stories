@@ -18,26 +18,29 @@ defineParticle(({DomParticle, resolver, html, log}) => {
   const host = "find-tv-shows";
 
   const template = html`
-<style>
-  [${host}] {
-    display: flex;
-    align-items: center;
-    padding: 8px 16px;
-    background-color: #333333;
-    color: white;
-  }
-  [${host}] input {
-    flex: 1;
-    font-size: 1.2em;
-    padding: 7px 16px;
-    margin: 0 8px;
-    border-radius: 16px;
-    border: none;
-    outline: none;
-  }
-</style>
-
 <div ${host}>
+  <style>
+    body {
+      --tiles-bg: #333333;
+      --tiles-color: whitesmoke;
+    }
+    [${host}] {
+      display: flex;
+      align-items: center;
+      padding: 8px 16px;
+      background-color: var(--tiles-bg);
+      color: var(--tiles-color);
+    }
+    [${host}] input {
+      flex: 1;
+      font-size: 1.2em;
+      padding: 7px 16px;
+      margin: 0 8px;
+      border-radius: 16px;
+      border: none;
+      outline: none;
+    }
+  </style>
   <icon trigger="find show" on-click="onSearchTrigger">search</icon>
   <input placeholder="TV Show Search" on-change="onChange" value="{{searchText}}">
   <speech-input on-result="onResult" on-end="onEnd"></speech-input>

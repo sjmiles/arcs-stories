@@ -1,10 +1,12 @@
-resource Store2Resource
-  start
-  [{"args":[{"type":{"tag":"Entity","data":{"names":["PlaidAccount"],"fields":{"id":"Text","item":"Text","user":"Text","name":"Text","balanceAvailable":"Number","balanceCurrent":"Number","institution_type":"Text","metaName":"Text","metaNumber":"Text","metaLimit":"Number","subtype":"Text","type":"Text"}}},"direction":"in","name":"account","isOptional":false,"dependentConnections":[]}],"name":"PlaidAccountItem","verbs":[],"description":{},"implFile":"https://sjmiles.github.io/arcs-stories/0.4/PlaidAccounts/./source/PlaidAccountItem.js","affordance":["dom","mock"],"slots":[{"kind":"particle-slot","location":{"start":{"offset":509,"line":15,"column":3},"end":{"offset":626,"line":19,"column":1}},"name":"item","tags":[],"isRequired":false,"isSet":false,"formFactor":null,"providedSlots":[]}]}]
+import '../PlaidAccounts/data/PlaidAccount.schema'
 
 shape HostedParticleShape
   in PlaidAccount {Text id, Text item, Text user, Text name, Number balanceAvailable, Number balanceCurrent, Text institution_type, Text metaName, Text metaNumber, Number metaLimit, Text subtype, Text type} *
   consume item
+
+resource Store2Resource
+  start
+  [{"args":[{"type":{"tag":"Entity","data":{"names":["PlaidAccount"],"fields":{"id":"Text","item":"Text","user":"Text","name":"Text","balanceAvailable":"Number","balanceCurrent":"Number","institution_type":"Text","metaName":"Text","metaNumber":"Text","metaLimit":"Number","subtype":"Text","type":"Text"}}},"direction":"in","name":"account","isOptional":false,"dependentConnections":[]}],"name":"PlaidAccountItem","verbs":[],"description":{},"implFile":"https://sjmiles.github.io/arcs-stories/0.4/PlaidAccounts/./source/PlaidAccountItem.js","affordance":["dom","mock"],"slots":[{"kind":"particle-slot","location":{"start":{"offset":509,"line":15,"column":3},"end":{"offset":626,"line":19,"column":1}},"name":"item","tags":[],"isRequired":false,"isSet":false,"formFactor":null,"providedSlots":[]}]}]
 
 store Store2 of HostedParticleShape '!144862372659306:app-shell-k139aaw6208rm5v5:121' @1 in Store2Resource
 

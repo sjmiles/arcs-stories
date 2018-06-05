@@ -1,0 +1,34 @@
+import '../PlaidAccounts/data/PlaidAccount.schema'
+
+particle PlaidAccountItem in '../PlaidAccounts/source/PlaidAccountItem.js'
+  in PlaidAccount account
+  consume item
+
+particle SelectableList in 'https://$shell/artifacts/Common/source/List.js'
+  inout [~a] items
+  inout ~a selected
+  affordance dom
+  consume root
+    provide set of item
+    provide set of action
+  description `show ${items}`
+
+particle ItemMultiplexer in 'https://$shell/artifacts/Common/source/Multiplexer.js'
+  host HostedParticleShape hostedParticle
+  in [~a] list
+  affordance dom
+  consume set of item
+
+recipe PlaidAccountsGenerated
+  copy #items as view0
+  create #selected as view1
+  SelectableList as particle0
+    items = view0
+    selected = view1
+    consume root as slot0
+      provide action as slot1
+      provide item as slot2
+  ItemMultiplexer as particle1
+    hostedParticle = PlaidAccountItem
+    list <- view0
+    consume item as slot2

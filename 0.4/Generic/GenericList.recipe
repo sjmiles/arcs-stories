@@ -17,23 +17,25 @@ import 'https://$shell/artifacts/Common/List.manifest'
 //---------------------------------
 
 recipe SelectableList
-  copy #items as items
+  ? #items as items
   create #selected as selected
   SelectableList
     items = items
     selected = selected
     consume root
       provide item
+  description `list that can contain ${SelectableList.items}`
 
 //---------------------------------
 // Tiled List Display (Selectable)
 //---------------------------------
 
 recipe SelectableTileList
-  use #tiles as items
+  ? #tiles as items
   create #selected as selected
   SelectableTileList
     items = items
     selected = selected
     consume root
       provide tile
+  description `tiles that can contain ${SelectableTileList.items}`

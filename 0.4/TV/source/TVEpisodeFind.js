@@ -15,6 +15,9 @@ defineParticle(({DomParticle, resolver}) => {
   /* global service */
 
   return class extends DomParticle {
+    get template() {
+      return ' ';
+    }
     update({episodes,show}, state) {
       // If we are asynchronously populating episodes, wait until this is done before
       // handling additional updates.

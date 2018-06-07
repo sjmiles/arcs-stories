@@ -4,6 +4,7 @@ import 'data/TVEpisode.schema'
 particle FindTVEpisodes in 'source/TVEpisodeFind.js'
   in TVShow show
   inout [TVEpisode] episodes
+  consume root // doesn't need this at all, but has no relevancy if it doesn't suck up a slot
   description `find TV episodes`
 
 recipe FindTVEpisodes

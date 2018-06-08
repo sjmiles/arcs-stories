@@ -21,6 +21,8 @@ defineParticle(({DomParticle, resolver, html, log}) => {
 <div ${host}>
   <style>
     body {
+      --shell-bg: #333333;
+      --shell-color: whitesmoke;
       --tiles-bg: #333333;
       --tiles-color: whitesmoke;
     }

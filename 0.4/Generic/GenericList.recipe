@@ -24,18 +24,18 @@ recipe SelectableList
     selected = selected
     consume root
       provide item
-  description `list that can contain ${SelectableList.items}`
+  description `container for items about ${SelectableList.items}`
 
 //---------------------------------
 // Tiled List Display (Selectable)
 //---------------------------------
 
 recipe SelectableTileList
-  ? #tiles as items
+  use #tiles as items
   create #selected as selected
   SelectableTileList
     items = items
     selected = selected
     consume root
       provide tile
-  description `tiles that can contain ${SelectableTileList.items}`
+  description `container for tiles about ${SelectableTileList.items}`

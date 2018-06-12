@@ -1,0 +1,42 @@
+// no new information here, these should be machine generated
+
+import 'https://$shell/artifacts/Common/List.manifest'
+import 'TVShowTile.recipe'
+
+recipe MuxedTVShowTile
+  use #shows as items
+  TileMultiplexer
+    list = items
+    hostedParticle = TVShowTile
+    consume tile
+  description `show ${TileMultiplexer.list} tiles`
+
+recipe TVShowSelectableTileList
+  use #tiles as items
+  create #selected as selected
+  SelectableTileList
+    items = items
+    selected = selected
+  TileMultiplexer
+    list = items
+    hostedParticle = TVShowTile
+
+import 'https://$cdn/artifacts/Common/Detail.manifest'
+import 'TVShowPanel.recipe'
+
+recipe TVShowDetailSlider
+  use #selected as selected
+  DetailSlider as particle3
+    selected = selected
+  TVShowPanel as particle4
+    show = selected
+
+import 'TVEpisodeItem.recipe'
+
+recipe MuxedTVEpisodeItem
+  use #episodes as items
+  ItemMultiplexer
+    list = items
+    hostedParticle = TVEpisodeItem
+    consume item
+  description `display TV episode tiles`

@@ -14,13 +14,3 @@ particle TVEpisodeItem in 'source/TVEpisodeItem.js'
   in TVEpisode episode
   consume item
 
-// if we supply a tile *and* a multiplexed-tile, then generic containers
-// can consume either format
-
-recipe MuxedTVEpisodeItem
-  use #episodes as items
-  ItemMultiplexer
-    list = items
-    hostedParticle = TVEpisodeItem
-    consume item
-  description `display TV episode tiles`

@@ -12,3 +12,6 @@ import 'TVShowPanel.recipe'
 import 'TVEpisodeFind.recipe'
 import 'TVEpisodeItem.recipe'
 
+// no new information in boilerplate, these should be machine generated
+
+import 'TVBoilerplate.recipes'

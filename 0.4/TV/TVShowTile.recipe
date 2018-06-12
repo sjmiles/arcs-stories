@@ -15,14 +15,3 @@ particle TVShowTile in './source/TVShowTile.js'
   consume tile
     provide set of action
 
-// if we supply a tile *and* a multiplexed-tile, then generic containers
-// can consume either format
-
-recipe MuxedTVShowTile
-  use #shows as items
-  TileMultiplexer
-    list = items
-    hostedParticle = TVShowTile
-    consume tile
-  //description `show ${TileMultiplexer.items} tiles`
-  description `display TV show tiles`

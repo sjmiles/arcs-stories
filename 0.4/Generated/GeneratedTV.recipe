@@ -78,4 +78,4 @@ recipe
     consume content as slot3
       provide action as slot4
       provide episodes as slot5
-  description `user composed recipe (so meta)`
+  description `combined TVShow recipes (memoized)`

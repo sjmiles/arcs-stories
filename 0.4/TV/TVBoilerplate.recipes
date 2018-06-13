@@ -1,15 +1,15 @@
-// no new information here, these should be machine generated
+// no new information in the recipes below: they should be machine generated
 
 import 'https://$shell/artifacts/Common/List.manifest'
 import 'TVShowTile.recipe'
 
-recipe MuxedTVShowTile
-  use #shows as items
-  TileMultiplexer
-    list = items
-    hostedParticle = TVShowTile
-    consume tile
-  description `show ${TileMultiplexer.list} tiles`
+//recipe MuxedTVShowTile
+//  use #shows as items
+//  TileMultiplexer
+//    list = items
+//    hostedParticle = TVShowTile
+//    consume tile
+//  description `show ${TileMultiplexer.list} tiles`
 
 recipe TVShowSelectableTileList
   use #tiles as items
@@ -33,10 +33,21 @@ recipe TVShowDetailSlider
 
 import 'TVEpisodeItem.recipe'
 
-recipe MuxedTVEpisodeItem
+//recipe MuxedTVEpisodeItem
+//  use #episodes as items
+//  ItemMultiplexer
+//    list = items
+//    hostedParticle = TVEpisodeItem
+//    consume item
+//  description `display TV episode tiles`
+
+recipe TVEpisodeList
   use #episodes as items
+  create #selected as selected
+  SelectableList
+    items = items
+    selected = selected
+    consume root as episodes
   ItemMultiplexer
     list = items
     hostedParticle = TVEpisodeItem
-    consume item
-  description `display TV episode tiles`

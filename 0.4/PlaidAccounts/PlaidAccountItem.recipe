@@ -23,5 +23,5 @@ recipe MuxedPlaidAccountItem
     list = items
     hostedParticle = PlaidAccountItem
     consume item
-  description `show list items`
+  //description `show list items`
 

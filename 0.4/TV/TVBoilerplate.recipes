@@ -41,13 +41,18 @@ import 'TVEpisodeItem.recipe'
 //    consume item
 //  description `display TV episode tiles`
 
+// this is customized only to `consume episodes` specifically,
+// need a general way to express this
+
+particle EpisodeList in 'https://$shell/artifacts/Common/source/List.js'
+  inout [~a] items
+  consume episodes
+    provide set of item
+
 recipe TVEpisodeList
   use #episodes as items
-  create #selected as selected
-  SelectableList
+  EpisodeList
     items = items
-    selected = selected
-    consume root as episodes
   ItemMultiplexer
     list = items
     hostedParticle = TVEpisodeItem

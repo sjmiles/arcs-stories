@@ -1,2 +1,2 @@
-//import 'GenericList.recipe'
-//import 'GenericDetailSlider.recipe'
+import 'GenericList.recipe'
+import 'GenericDetailSlider.recipe'

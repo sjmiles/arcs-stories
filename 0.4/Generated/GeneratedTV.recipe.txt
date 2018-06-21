@@ -95,10 +95,10 @@ particle ItemMultiplexer in 'https://$shell/artifacts/Common/source/Multiplexer.
 
 recipe
   ? #shows #tiles as handle0
-  create #selected as handle1
+  ? #selected as handle1
   use '!637976888483767:app-shell-dngujb3ufynve2x97:118' as handle2
   ? #episodes #items as handle3
-  create #selected as handle4
+  ? #selected as handle4
   use '!637976888483767:app-shell-dngujb3ufynve2x97:196' as handle5
   FindTVShows as particle0
     shows = handle0

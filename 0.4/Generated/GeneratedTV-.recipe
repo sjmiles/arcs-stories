@@ -1,0 +1,81 @@
+resource Store0Resource
+  start
+  [{"$id":"!497946570347455:app-shell-azozg1rlijypyo2p:0:inner:0","day":"Wednesday","description":"<p><b>Eve</b> is the star of a brand new sci-fi drama from CBBC. She's no ordinary girl – Eve is the result of an incredibly advanced robotics experiment.</p>","image":"https://static.tvmaze.com/uploads/images/medium_portrait/17/43083.jpg","name":"Eve","network":"CBBC","showid":"3129","time":"16:30"},{"$id":"!497946570347455:app-shell-azozg1rlijypyo2p:0:inner:1","day":"Sunday","description":"<p>Based on the novellas by Luke Jennings, <b>Killing Eve</b> centers on two women; Eve is a bored, whip-smart, pay-grade security services operative whose desk-bound job doesn't fulfill her fantasies of being a spy. Villanelle is an elegant, talented killer who clings to the luxuries her violent job affords her. Killing Eve topples the typical spy-action thriller as these two fiercely intelligent women, equally obsessed with each other, go head to head in an epic game of cat and mouse.</p>","image":"https://static.tvmaze.com/uploads/images/medium_portrait/148/370305.jpg","name":"Killing Eve","network":"BBC America","showid":"22904","time":"20:00"},{"$id":"!497946570347455:app-shell-azozg1rlijypyo2p:0:inner:2","day":"Thursday","description":"<p>The show is named for its star, rapper Eve, and is about a trio of women who have their own boutique and clothing line. The show follows their dating lives and those of their three closest male friends. Michelle Penelope \"Shelly\" Williams, a beautiful and intelligent woman of the new generation trying to navigate the exhilarating world of 21st Century love, sex, romance and career. Shelly has been a little too single, a little too long for her own liking. Her two best friends, Rita (Ali Landry), a gorgeous, single former model, and Janie (Natalie Desselle-Reid), a woman very happy to be married and out of the dating scene, offer conflicting advice as Shelly tries to find her way on the rocky road to love. Representing the male side of the relationship equation is J.T. (Jason George), a handsome, regular kind of guy who really enjoys being single, and his best pal, Nick (Brian Hooks), who is looking for that one perfect woman who can meet his very exacting standards. Donovan Brink (Sean Maguire), the handsome, fashionable manager of Bedlam, one of Miami's hottest clubs, is friends with both Shelly and J.T. and inevitably gets stuck in the middle when problems arise.</p>","image":"https://static.tvmaze.com/uploads/images/medium_portrait/27/69606.jpg","name":"Eve","network":"UPN","showid":"7535","time":"20:30"},{"$id":"!497946570347455:app-shell-azozg1rlijypyo2p:0:inner:3","day":"","description":"","image":"https://static.tvmaze.com/uploads/images/medium_portrait/67/168682.jpg","name":"Eve Dönüş","network":"ATV","showid":"19253","time":""},{"$id":"!497946570347455:app-shell-azozg1rlijypyo2p:0:inner:4","day":"Tuesday","description":"<p>The future, probably Japan. Robots have long been put into practical use, and androids have just come into use. Influenced by the Robot Ethics Committee, it's become common sense for people to treat androids like household appliances. Their appearance - indistinguishable from humans except for the ring over each android's head - has led some people to empathize unnecessarily with androids. Known as \"android-holics\", such people have become a social problem. Rikuo, a high school student, has been taught from childhood that androids are not to be viewed as humans, and has always used them as convenient tools. One day Rikuo discovers some strange data in the behavior records of his family's household android, Sammy. Rikuo and his friend Masaki trace Sammy's movements, only to discover a mysterious café that features a house rule that \"humans and robots are to be treated the same\".</p>","image":"https://static.tvmaze.com/uploads/images/medium_portrait/29/74577.jpg","name":"Eve no Jikan","network":"Yahoo! Japan","showid":"8240","time":""},{"$id":"!497946570347455:app-shell-azozg1rlijypyo2p:0:inner:5","day":"Monday","description":"<p>A light-hearted teen drama series focusing on the life and times, the trials and tribulations, of 15-year-old philosopher Eve Baxter, her friends, and somewhat odd family.</p>","image":"https://static.tvmaze.com/uploads/images/medium_portrait/107/267767.jpg","name":"Being Eve","network":"Three","showid":"27117","time":""},{"$id":"!497946570347455:app-shell-azozg1rlijypyo2p:0:inner:6","day":"","description":"<p>In the future, interstellar travel takes place via \"inflation gates\" that pass through a parallel universe. Unfortunately, denizens of another universe, called \"ghouls\", want to invade our universe using the same portals. At Watcher's Nest, a distant station, a ship arriving through a portal is attacked by a ghoul, and one of the passengers, rookie soldier Kureha Misaki, undergoes a dreadful change.</p>","image":"https://static.tvmaze.com/uploads/images/medium_portrait/148/372342.jpg","name":"Divergence Eve","network":"AT-X","showid":"19049","time":""},{"$id":"!497946570347455:app-shell-azozg1rlijypyo2p:0:inner:7","day":"","description":"","image":"https://static.tvmaze.com/uploads/images/medium_portrait/65/164466.jpg","name":"Eve Düşen Yıldırım","network":"Show TV","showid":"14172","time":""},{"$id":"!497946570347455:app-shell-azozg1rlijypyo2p:0:inner:8","day":"","description":"<p>Live coverage of London's New Year's Eve fireworks from the Thames Embankment as Big Ben strikes midnight.</p>","image":"https://static.tvmaze.com/uploads/images/medium_portrait/137/342747.jpg","name":"New Year's Eve Fireworks","network":"BBC One","showid":"9948","time":"23:55"},{"$id":"!497946570347455:app-shell-azozg1rlijypyo2p:0:inner:9","day":"Monday","description":"<p>Adam &amp; Eve bring you a daily fix of music, movies, celebs, games, fashion, pranks, sport, craft, cooking and so much more! 4.30pm weekdays on TV2.</p>","image":"https://static.tvmaze.com/uploads/images/medium_portrait/61/153354.jpg","name":"The Adam & Eve Show","network":"TVNZ 2","showid":"18101","time":"15:35"}]
+
+resource Store1Resource
+  start
+  [null]
+
+resource Store2Resource
+  start
+  [{"args":[{"type":{"tag":"Entity","data":{"names":["TVShow"],"fields":{"showid":"Text","name":"Text","description":"Text","image":"Text","network":"Text","day":"Text","time":"Text","favorite":"Boolean","delete":"Boolean"}}},"direction":"in","name":"show","isOptional":false,"dependentConnections":[]}],"name":"TVShowTile","verbs":[],"description":{},"implFile":"https://sjmiles.github.io/arcs-stories/0.4/TV/./source/TVShowTile.js","affordance":["dom","mock"],"slots":[{"kind":"particle-slot","location":{"start":{"offset":484,"line":15,"column":3},"end":{"offset":627,"line":21,"column":1}},"name":"tile","tags":[],"isRequired":false,"isSet":false,"formFactor":null,"providedSlots":[{"kind":"provided-slot","location":{"start":{"offset":501,"line":16,"column":5},"end":{"offset":627,"line":21,"column":1}},"name":"action","tags":[],"isRequired":false,"isSet":true,"formFactor":null,"handles":[]}]}]}]
+
+shape HostedTileParticleShape
+  in TVShow {Text showid, Text name, Text description, Text image, Text network, Text day, Text time, Boolean favorite, Boolean delete} *
+  consume tile
+
+store Store2 of HostedTileParticleShape '!497946570347455:app-shell-azozg1rlijypyo2p:138' @1  in Store2Resource
+
+particle FindTVShows in 'https://sjmiles.github.io/arcs-stories/0.4/TV/./source/TVShowFind.js'
+  inout [TVShow {Text showid, Text name, Text description, Text image, Text network, Text day, Text time, Boolean favorite, Boolean delete}] shows
+  affordance dom
+  consume root
+  description `find tv shows`
+
+particle SelectableTileList in 'https://$shell/artifacts/Common/source/TileList.js'
+  inout [~a] items
+  inout ~a selected
+  affordance dom
+  consume root
+    provide set of tile
+    provide set of action
+  description `tiling that can contain ${items} with selection`
+
+particle TileMultiplexer in 'https://$shell/artifacts/Common/source/Multiplexer.js'
+  host HostedTileParticleShape hostedParticle
+  in [~a] list
+  affordance dom
+  consume set of tile
+
+particle DetailSlider in 'https://$cdn/artifacts/Common/source/DetailSlider.js'
+  inout ~a selected
+  affordance dom
+  consume modal
+    provide content
+  description `show details about ${selected}`
+
+particle TVShowPanel in 'https://sjmiles.github.io/arcs-stories/0.4/TV/./source/TVShowPanel.js'
+  in TVShow {Text showid, Text name, Text description, Text image, Text network, Text day, Text time, Boolean favorite, Boolean delete} show
+  affordance dom
+  consume content
+    provide action
+    provide episodes
+  description `${show} details`
+
+recipe
+  ? #shows #tiles as handle0
+  ? #selected as handle1
+  use '!497946570347455:app-shell-azozg1rlijypyo2p:138' as handle2
+  FindTVShows as particle0
+    shows = handle0
+    consume root as slot0
+  SelectableTileList as particle1
+    items = handle0
+    selected = handle1
+    consume root as slot0
+      provide action as slot1
+      provide tile as slot2
+  TileMultiplexer as particle2
+    hostedParticle = handle2
+    list <- handle0
+    consume tile as slot2
+  DetailSlider as particle3
+    selected = handle1
+    consume modal as slot6
+      provide content as slot3
+  TVShowPanel as particle4
+    show <- handle1
+    consume content as slot3
+      provide action as slot4
+      provide episodes as slot5
+  description `combined TVShow recipes (memoized)`

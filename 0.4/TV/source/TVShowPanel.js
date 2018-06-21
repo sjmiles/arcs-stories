@@ -35,7 +35,7 @@ defineParticle(({DomParticle, html}) => {
   </div>
   <div description style="margin: 16px 0;" unsafe-html="{{description}}"></div>
   <!-- <div style="color: #333; font-size: 1.5em; margin: 16px 0;">Episodes</div> -->
-  <div slotid="episodes"></div>
+  <div slotid="items"></div>
 </div>
 
   `.trim();

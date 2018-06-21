@@ -26,14 +26,14 @@ defineParticle(({DomParticle, resolver, html, log}) => {
       --tiles-bg: #333333;
       --tiles-color: whitesmoke;
     }
-    [${host}] {
+    [${host}] > [search] {
       display: flex;
       align-items: center;
       padding: 8px 16px;
       background-color: var(--tiles-bg);
       color: var(--tiles-color);
     }
-    [${host}] input {
+    [${host}] > [search] > input {
       flex: 1;
       font-size: 1.2em;
       padding: 7px 16px;
@@ -43,9 +43,12 @@ defineParticle(({DomParticle, resolver, html, log}) => {
       outline: none;
     }
   </style>
-  <icon trigger="find show" on-click="onSearchTrigger">search</icon>
-  <input placeholder="TV Show Search" on-change="onChange" value="{{searchText}}">
-  <speech-input on-result="onResult" on-end="onEnd"></speech-input>
+  <div search>
+    <icon trigger="find show" on-click="onSearchTrigger">search</icon>
+    <input placeholder="TV Show Search" on-change="onChange" value="{{searchText}}">
+    <speech-input on-result="onResult" on-end="onEnd"></speech-input>
+  </div>
+  <div slotid="tiles"></div>
 </div>
 
   `.trim();

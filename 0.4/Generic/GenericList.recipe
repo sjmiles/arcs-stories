@@ -6,51 +6,50 @@
 // subject to an additional IP rights grant found at
 // http://polymer.github.io/PATENTS.txt
 
-//---------------------------------
-// Generic Display Tools
-//---------------------------------
+import 'https://$shell/artifacts/Common/List.manifest'
 
-particle SelectableList in 'https://$shell/artifacts/Common/source/List.js'
-  inout [~a] items
-  inout ~a selected
-  consume items
-    provide set of item
-    provide set of action
-  description `list that can contain ${items} with selection`
+//------------------------
+// Particles: Generic List
+//------------------------
 
+//particle SelectableList in 'https://$shell/artifacts/Common/source/List.js'
+//  inout [~a] items
+//  inout ~a selected
+//  consume root
+//    provide preamble
+//    must provide set of item
+//      handle items
+//    provide set of annotation
+//      handle items
+//    provide action
+//      handle items
+//    provide postamble
+//  description `list that can contain ${items} with selection`
 
-particle SelectableTiles in 'https://$shell/artifacts/Common/source/TileList.js'
-  inout [~a] items
-  inout ~a selected
-  consume tiles
-    provide set of tile
-    provide set of action
-  description `tiling that can contain ${items} with selection`
+//particle SelectableTiles in 'https://$shell/artifacts/Common/source/TileList.js'
+//  inout [~a] items
+//  inout ~a selected
+//  consume tiles
+//    provide set of tile
+//    //provide set of action
+//  description `tiling that can contain ${items} with selection`
 
-//---------------------------------
-// List Display
-//---------------------------------
+//----------------------------------
+// Recipe: Generic List (Selectable)
+//----------------------------------
 
-recipe SelectableList
-  use #items as items
+recipe SelectableListRecipe
+  copy #items as items
   create #selected as selected
   SelectableList
-    items = items
-    selected = selected
-    consume items
-      provide item
   description `container for items about ${SelectableList.items}`
 
-//---------------------------------
-// Tiled List Display (Selectable)
-//---------------------------------
+//----------------------------------------
+// Recipe: Generic Tiled List (Selectable)
+//----------------------------------------
 
-recipe SelectableTiles
-  use #tiles as items
+recipe SelectableTilesRecipe
+  copy #tiles as items
   create #selected as selected
   SelectableTiles
-    items = items
-    selected = selected
-    consume tiles
-      provide tile
   description `container for tiles about ${SelectableTiles.items}`

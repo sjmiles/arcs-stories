@@ -8,18 +8,18 @@
 
 import 'https://$shell/artifacts/Common/List.manifest'
 
-import './data/PlaidAccount.schema'
+import './data/PlaidTransaction.schema'
 
-particle PlaidAccountItem in './source/PlaidAccountItem.js'
-  in PlaidAccount account
+particle PlaidTransactionItem in './source/PlaidTransactionItem.js'
+  in PlaidTransaction transaction
   consume item
 
 // if we supply an item *and* a multiplexed-item, then generic containers
 // can consume either format
 
-recipe MuxedPlaidAccountItem
-  copy #accounts as items
+recipe MuxedPlaidTransactionItem
+  copy #transactions as items
   ItemMultiplexer
     list = items
-    hostedParticle = PlaidAccountItem
+    hostedParticle = PlaidTransactionItem
 

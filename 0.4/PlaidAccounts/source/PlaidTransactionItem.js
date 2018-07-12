@@ -9,9 +9,9 @@
 
 "use strict";
 
-defineParticle(({DomParticle, html, log}) => {
+defineParticle(({DomParticle, html}) => {
 
-  const host = 'plaid-account';
+  const host = 'plaid-transaction';
 
   const styleSheet = html`
 <style>
@@ -35,7 +35,7 @@ defineParticle(({DomParticle, html, log}) => {
 
 <div ${host}>
 ${styleSheet}
-  <icon>{{icon}}</icon>
+  <!-- <icon>{{icon}}</icon> -->
   <span>{{name}}</span>
   <span style="flex: 1;"></span>
   <div balance section style="{{balanceStyle}}">$<span>{{balance}}</span></div>
@@ -47,15 +47,15 @@ ${styleSheet}
     get template() {
       return template;
     }
-    shouldRender({account}) {
-      return Boolean(account);
+    shouldRender({transaction}) {
+      return Boolean(transaction);
     }
-    render({account}) {
+    render({transaction}) {
       return {
-        name: account.metaName,
-        icon: account.type == "credit" ? `credit_card` : `account_balance`,
-        balance: account.balanceCurrent,
-        balanceStyle: (account.type=="credit" ? -1 : 1) * account.balanceCurrent < 0 ? 'color: #CC0000' : 'color: green'
+        name: transaction.name,
+        //icon: transaction.type == "credit" ? `credit_card` : `account_balance`,
+        balance: Math.abs(transaction.amount).toFixed(2),
+        balanceStyle: (transaction.type=="credit" ? -1 : 1) * transaction.amount < 0 ? 'color: #CC0000' : 'color: green'
       };
     }
   };

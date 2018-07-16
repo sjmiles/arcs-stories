@@ -8,32 +8,6 @@
 
 import 'https://$shell/artifacts/Common/List.manifest'
 
-//------------------------
-// Particles: Generic List
-//------------------------
-
-//particle SelectableList in 'https://$shell/artifacts/Common/source/List.js'
-//  inout [~a] items
-//  inout ~a selected
-//  consume root
-//    provide preamble
-//    must provide set of item
-//      handle items
-//    provide set of annotation
-//      handle items
-//    provide action
-//      handle items
-//    provide postamble
-//  description `list that can contain ${items} with selection`
-
-//particle SelectableTiles in 'https://$shell/artifacts/Common/source/TileList.js'
-//  inout [~a] items
-//  inout ~a selected
-//  consume tiles
-//    provide set of tile
-//    //provide set of action
-//  description `tiling that can contain ${items} with selection`
-
 //----------------------------------
 // Recipe: Generic List (Selectable)
 //----------------------------------
@@ -42,7 +16,6 @@ recipe SelectableListRecipe
   copy #items as items
   create #selected as selected
   SelectableList
-  description `container for items about ${SelectableList.items}`
 
 //----------------------------------------
 // Recipe: Generic Tiled List (Selectable)
@@ -51,5 +24,4 @@ recipe SelectableListRecipe
 recipe SelectableTilesRecipe
   copy #tiles as items
   create #selected as selected
-  SelectableTiles
-  description `container for tiles about ${SelectableTiles.items}`
+  SelectableTileList

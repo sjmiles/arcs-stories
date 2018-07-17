@@ -8,7 +8,7 @@ recipe MuxedTVShowTile
     list = items
     hostedParticle = TVShowTile
     consume tile
-  description `show ${TileMultiplexer.list} tiles`
+  description `disembodied tiles for ${TileMultiplexer.list}`
 
 import 'TVEpisodeItem.recipe'
 
@@ -18,6 +18,6 @@ recipe MuxedTVEpisodeItem
     list = items
     hostedParticle = TVEpisodeItem
     consume item
-  description `display TV episode tiles`
+  description `disembodied items for ${ItemMultiplexer.list}`
 
 

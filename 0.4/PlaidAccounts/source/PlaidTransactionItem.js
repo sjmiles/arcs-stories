@@ -9,7 +9,7 @@
 
 "use strict";
 
-defineParticle(({DomParticle, html}) => {
+defineParticle(({DomParticle, html, log}) => {
 
   const host = 'plaid-transaction';
 
@@ -19,6 +19,7 @@ defineParticle(({DomParticle, html}) => {
     cursor: pointer;
     display: flex;
     align-items: center;
+    padding: 4px 2px;
   }
   [${host}] > * {
     padding-right: 8px;
@@ -51,6 +52,7 @@ ${styleSheet}
       return Boolean(transaction);
     }
     render({transaction}) {
+      log(transaction.name);
       return {
         name: transaction.name,
         //icon: transaction.type == "credit" ? `credit_card` : `account_balance`,

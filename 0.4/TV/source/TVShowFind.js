@@ -10,7 +10,7 @@
 
 /* global defineParticle, importScripts */
 
-defineParticle(({DomParticle, resolver, html, log}) => {
+defineParticle(({DomParticle, resolver, html}) => {
 
   importScripts(resolver('TVShowFind/TvMaze.js'));
   /* global service */

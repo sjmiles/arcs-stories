@@ -19,6 +19,7 @@ defineParticle(({DomParticle, html, log}) => {
     cursor: pointer;
     display: flex;
     align-items: center;
+    padding: 16px 8px;
   }
   [${host}] > * {
     padding-right: 8px;

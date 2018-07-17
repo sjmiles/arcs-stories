@@ -9,18 +9,18 @@
 import 'https://$shell/artifacts/Common/List.manifest'
 
 import './data/PlaidAccount.schema'
+import './data/PlaidTransaction.schema'
 
-particle PlaidAccountItem in './source/PlaidAccountItem.js'
+particle PlaidTransactionFilter in './source/PlaidTransactionFilter.js'
   in PlaidAccount account
-  consume item
+  in [PlaidTransaction] transactions
+  inout [PlaidTransaction] accountTransactions
 
-// if we supply an item *and* a multiplexed-item, then generic containers
-// can consume either format
-
-recipe MuxedPlaidAccountItem
-  copy #accounts as items
-  ItemMultiplexer
-    list = items
-    hostedParticle = PlaidAccountItem
-  description `disembodied items for ${ItemMultiplexer.list}`
-
+recipe PlaidTransacationsByAccount
+  create #xactions as accountTransactions
+  use #selected as account
+  map as transactions
+  PlaidTransactionFilter
+    account = account
+    transactions = transactions
+    accountTransactions = accountTransactions

@@ -10,3 +10,4 @@ import 'PlaidData.recipe'
 
 import 'PlaidAccountItem.recipe'
 import 'PlaidTransactionItem.recipe'
+import 'PlaidTransactionFilter.recipe'

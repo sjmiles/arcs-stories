@@ -15,6 +15,3 @@ recipe TVShowPanel
   use #selected as selected
   TVShowPanel
     show = selected
-    consume content
-      provide action
-      provide items

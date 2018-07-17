@@ -22,5 +22,5 @@ recipe MuxedPlaidAccountItem
   ItemMultiplexer
     list = items
     hostedParticle = PlaidAccountItem
-  description `disembodied items for ${ItemMultiplexer.list}`
+  //description `disembodied items for ${ItemMultiplexer.list}`
 

@@ -1,0 +1,124 @@
+import 'https://sjmiles.github.io/arcs-stories/0.4/PlaidAccounts/PlaidData.recipe'
+
+resource Store0Resource
+  start
+  [{"id":"QPO8Jo8vdDHMepg41PBwckXm4KdK1yUdmXOwK","item":"KdDjmojBERUKx3JkDd9RuxA5EvejA4SENO4AA","user":"eJXpMzpR65FP4RYno6rzuA7OZjd9n3Hna0RYa","balanceAvailable":1203.42,"balanceCurrent":1274.93,"institution_type":"citi","name":"Plaid Savings","metaName":"Plaid Savings","metaNumber":"9606","subtype":"savings","type":"depository","$id":"manifest:https://sjmiles.github.io/arcs-stories/0.4/PlaidAccounts/PlaidData.recipe::0"},{"id":"nban4wnPKEtnmEpaKzbYFYQvA7D7pnCaeDBMy","item":"KdDjmojBERUKx3JkDd9RuxA5EvejA4SENO4AA","user":"eJXpMzpR65FP4RYno6rzuA7OZjd9n3Hna0RYa","balanceAvailable":1081.78,"balanceCurrent":1253.32,"institution_type":"citi","name":"Plaid Checking","metaName":"Plaid Checking","metaNumber":"1702","subtype":"checking","type":"depository","$id":"manifest:https://sjmiles.github.io/arcs-stories/0.4/PlaidAccounts/PlaidData.recipe::1"},{"id":"XARE85EJqKsjxLp6XR8ocg8VakrkXpTXmRdOo","item":"KdDjmojBERUKx3JkDd9RuxA5EvejA4SENO4AA","user":"eJXpMzpR65FP4RYno6rzuA7OZjd9n3Hna0RYa","balanceAvailable":7205.23,"balanceCurrent":7255.23,"institution_type":"citi","name":"Plaid Premier Checking","metaName":"Plaid Premier Checking","metaNumber":"5204","subtype":"checking","type":"depository","$id":"manifest:https://sjmiles.github.io/arcs-stories/0.4/PlaidAccounts/PlaidData.recipe::2"},{"id":"pJPM4LMBNQFrOwp0jqEyTwyxJQrQbgU6kq37k","item":"KdDjmojBERUKx3JkDd9RuxA5EvejA4SENO4AA","user":"eJXpMzpR65FP4RYno6rzuA7OZjd9n3Hna0RYa","balanceAvailable":9930,"balanceCurrent":2275.58,"institution_type":"citi","metaLimit":12500,"name":"Plaid Credit Card","metaName":"Plaid Credit Card","metaNumber":"3002","type":"credit","$id":"manifest:https://sjmiles.github.io/arcs-stories/0.4/PlaidAccounts/PlaidData.recipe::3"}]
+
+resource Store1Resource
+  start
+  [{"balanceAvailable":1081.78,"balanceCurrent":1253.32,"id":"nban4wnPKEtnmEpaKzbYFYQvA7D7pnCaeDBMy","institution_type":"citi","item":"KdDjmojBERUKx3JkDd9RuxA5EvejA4SENO4AA","metaName":"Plaid Checking","metaNumber":"1702","name":"Plaid Checking","subtype":"checking","type":"depository","user":"eJXpMzpR65FP4RYno6rzuA7OZjd9n3Hna0RYa","$id":"manifest:https://sjmiles.github.io/arcs-stories/0.4/PlaidAccounts/PlaidData.recipe::1"}]
+
+resource Store2Resource
+  start
+  [{"args":[{"type":{"tag":"Entity","data":{"names":["PlaidAccount"],"fields":{"id":"Text","item":"Text","user":"Text","name":"Text","balanceAvailable":"Number","balanceCurrent":"Number","institution_type":"Text","metaName":"Text","metaNumber":"Text","metaLimit":"Number","subtype":"Text","type":"Text"}}},"direction":"in","name":"account","isOptional":false,"dependentConnections":[]}],"name":"PlaidAccountItem","verbs":[],"description":{},"implFile":"https://sjmiles.github.io/arcs-stories/0.4/PlaidAccounts/./source/PlaidAccountItem.js","affordance":["dom","mock"],"slots":[{"kind":"particle-slot","location":{"start":{"offset":511,"line":15,"column":3},"end":{"offset":629,"line":20,"column":1}},"name":"item","tags":[],"isRequired":false,"isSet":false,"formFactor":null,"providedSlots":[]}]}]
+
+resource Store3Resource
+  start
+  [{"account":"nban4wnPKEtnmEpaKzbYFYQvA7D7pnCaeDBMy","id":"DAE3Yo3wXgskjXV1JqBDIrDBVvjMLDCQ4rMQdR","amount":3.19,"date":"2014-06-21","name":"Gregorys Coffee","metaLocationAddress":"874 Avenue of the Americas","metaLocationCity":"New York","metaLocationState":"NY","pending":"false","typePrimary":"place","category0":"Food and Drink","category1":"Restaurants","category2":"Coffee Shop","category_id":"13005043","scoreLocationAddress":1,"scoreLocationCity":1,"scoreLocationState":1,"scoreName":0.2,"$id":"manifest:https://sjmiles.github.io/arcs-stories/0.4/PlaidAccounts/PlaidData.recipe::7"},{"account":"nban4wnPKEtnmEpaKzbYFYQvA7D7pnCaeDBMy","id":"1vAj1Eja5BIn4R7V6Mp1hBPQgkryZRHryZ0rDY","amount":80,"date":"2014-06-08","name":"ATM Withdrawal","metaLocationCity":"San Francisco","metaLocationState":"CA","pending":"false","typePrimary":"special","category0":"Transfer","category1":"Withdrawal","category2":"ATM","category_id":"21012002","scoreLocationCity":1,"scoreLocationState":1,"scoreName":1,"$id":"manifest:https://sjmiles.github.io/arcs-stories/0.4/PlaidAccounts/PlaidData.recipe::8"},{"account":"nban4wnPKEtnmEpaKzbYFYQvA7D7pnCaeDBMy","id":"96d5AO5gLjC9EowVyn5OCBRjJR9LaOHJnBVJzd","amount":240,"date":"2014-06-01","name":"Online Transfer to Sav ...9606","pending":"false","typePrimary":"special","category0":"Transfer","category1":"Account Transfer","category_id":"21001000","scoreName":1,"$id":"manifest:https://sjmiles.github.io/arcs-stories/0.4/PlaidAccounts/PlaidData.recipe::10"},{"account":"nban4wnPKEtnmEpaKzbYFYQvA7D7pnCaeDBMy","id":"VK0EQ5Ea13u9Qwzm6nA8CNaze8gdJoCJvx6JDO","amount":-0.93,"date":"2014-05-17","name":"Interest Payment","pending":"false","typePrimary":"unresolved","category0":"Interest","category_id":"15000000","scoreName":0.2,"$id":"manifest:https://sjmiles.github.io/arcs-stories/0.4/PlaidAccounts/PlaidData.recipe::11"},{"account":"nban4wnPKEtnmEpaKzbYFYQvA7D7pnCaeDBMy","id":"moPE4dE1yMHJX5pmRzwrcvpQqPdDnZHEKPREYL","amount":7.23,"date":"2014-05-09","name":"Krankies Coffee","metaLocationAddress":"211 E 3rd St","metaLocationCity":"Winston Salem","metaLocationState":"NC","pending":"false","typePrimary":"place","category0":"Food and Drink","category1":"Restaurants","category2":"Coffee Shop","category_id":"13005043","scoreLocationAddress":1,"scoreLocationCity":1,"scoreLocationState":1,"scoreName":0.2,"$id":"manifest:https://sjmiles.github.io/arcs-stories/0.4/PlaidAccounts/PlaidData.recipe::13"},{"account":"nban4wnPKEtnmEpaKzbYFYQvA7D7pnCaeDBMy","id":"dRBp95pEwZfMXENvpw3YHY43VNK4LVSP7RkPpA","amount":-800,"date":"2014-04-20","name":"Venmo Cashout 18375552","pending":"false","typePrimary":"special","category0":"Transfer","category1":"Third Party","category2":"Venmo","category_id":"21010001","scoreName":1,"$id":"manifest:https://sjmiles.github.io/arcs-stories/0.4/PlaidAccounts/PlaidData.recipe::15"},{"account":"nban4wnPKEtnmEpaKzbYFYQvA7D7pnCaeDBMy","id":"moPE4dE1yMHJX5pmRzwrcvpkxdopLxtEKPREYo","amount":120,"date":"2014-04-19","name":"Venmo Payment 16991172","pending":"false","typePrimary":"special","category0":"Transfer","category1":"Third Party","category2":"Venmo","category_id":"21010001","scoreName":1,"$id":"manifest:https://sjmiles.github.io/arcs-stories/0.4/PlaidAccounts/PlaidData.recipe::16"}]
+
+resource Store4Resource
+  start
+  []
+
+resource Store5Resource
+  start
+  [{"args":[{"type":{"tag":"Entity","data":{"names":["PlaidTransaction"],"fields":{"account":"Text","id":"Text","amount":"Number","date":"Text","name":"Text","metaLocationAddress":"Text","metaLocationCity":"Text","metaLocationState":"Text","metaLocationZip":"Text","metaLocationCoordinatesLat":"Number","metaLocationCoordinatesLon":"Number","pending":"Text","typePrimary":"Text","category0":"Text","category1":"Text","category2":"Text","category_id":"Text","scoreLocationAddress":"Number","scoreLocationCity":"Number","scoreLocationState":"Number","scoreLocationZip":"Number","scoreName":"Number"}}},"direction":"in","name":"transaction","isOptional":false,"dependentConnections":[]}],"name":"PlaidTransactionItem","verbs":[],"description":{},"implFile":"https://sjmiles.github.io/arcs-stories/0.4/PlaidAccounts/./source/PlaidTransactionItem.js","affordance":["dom","mock"],"slots":[{"kind":"particle-slot","location":{"start":{"offset":531,"line":15,"column":3},"end":{"offset":649,"line":20,"column":1}},"name":"item","tags":[],"isRequired":false,"isSet":false,"formFactor":null,"providedSlots":[]}]}]
+
+shape HostedParticleShape
+  in PlaidAccount {Text id, Text item, Text user, Text name, Number balanceAvailable, Number balanceCurrent, Text institution_type, Text metaName, Text metaNumber, Number metaLimit, Text subtype, Text type} *
+  consume item
+
+shape HostedParticleShape
+  in PlaidTransaction {Text account, Text id, Number amount, Text date, Text name, Text metaLocationAddress, Text metaLocationCity, Text metaLocationState, Text metaLocationZip, Number metaLocationCoordinatesLat, Number metaLocationCoordinatesLon, Text pending, Text typePrimary, Text category0, Text category1, Text category2, Text category_id, Number scoreLocationAddress, Number scoreLocationCity, Number scoreLocationState, Number scoreLocationZip, Number scoreName} *
+  consume item
+
+store Store2 of HostedParticleShape '!531876021428796:app-shell-p3rgwzdjtrhmf3usd:88' @1  in Store2Resource
+
+store Store5 of HostedParticleShape '!531876021428796:app-shell-p3rgwzdjtrhmf3usd:125' @1  in Store5Resource
+
+particle ItemMultiplexer in 'https://$shell/artifacts/Common/source/Multiplexer.js'
+  host HostedParticleShape hostedParticle
+  in [~a] list
+  affordance dom
+  consume set of item
+
+particle SelectableList in 'https://$shell/artifacts/Common/source/List.js'
+  inout [~a] items
+  inout ~a selected
+  affordance dom
+  consume root
+    provide preamble
+    must provide set of item
+      handle items
+    provide set of annotation
+      handle items
+    provide action
+      handle items
+    provide postamble
+  description `show ${items}`
+
+particle ItemMultiplexer in 'https://$shell/artifacts/Common/source/Multiplexer.js'
+  host HostedParticleShape hostedParticle
+  in [~a] list
+  affordance dom
+  consume set of item
+
+particle PlaidTransactionFilter in 'https://sjmiles.github.io/arcs-stories/0.4/PlaidAccounts/./source/PlaidTransactionFilter.js'
+  in PlaidAccount {Text id, Text item, Text user, Text name, Number balanceAvailable, Number balanceCurrent, Text institution_type, Text metaName, Text metaNumber, Number metaLimit, Text subtype, Text type} account
+  in [PlaidTransaction {Text account, Text id, Number amount, Text date, Text name, Text metaLocationAddress, Text metaLocationCity, Text metaLocationState, Text metaLocationZip, Number metaLocationCoordinatesLat, Number metaLocationCoordinatesLon, Text pending, Text typePrimary, Text category0, Text category1, Text category2, Text category_id, Number scoreLocationAddress, Number scoreLocationCity, Number scoreLocationState, Number scoreLocationZip, Number scoreName}] transactions
+  inout [PlaidTransaction {Text account, Text id, Number amount, Text date, Text name, Text metaLocationAddress, Text metaLocationCity, Text metaLocationState, Text metaLocationZip, Number metaLocationCoordinatesLat, Number metaLocationCoordinatesLon, Text pending, Text typePrimary, Text category0, Text category1, Text category2, Text category_id, Number scoreLocationAddress, Number scoreLocationCity, Number scoreLocationState, Number scoreLocationZip, Number scoreName}] accountTransactions
+  affordance dom
+
+particle SelectableList in 'https://$shell/artifacts/Common/source/List.js'
+  inout [~a] items
+  inout ~a selected
+  affordance dom
+  consume root
+    provide preamble
+    must provide set of item
+      handle items
+    provide set of annotation
+      handle items
+    provide action
+      handle items
+    provide postamble
+  description `show ${items}`
+
+recipe
+  copy #items as handle0
+  create #selected as handle1
+  use '!531876021428796:app-shell-p3rgwzdjtrhmf3usd:88' as handle2
+  create #xactions as handle3
+  create #selected as handle5
+  use '!531876021428796:app-shell-p3rgwzdjtrhmf3usd:125' as handle6
+  ItemMultiplexer as particle0
+    hostedParticle = handle2
+    list <- handle0
+    consume item as slot0
+  SelectableList as particle1
+    items = handle0
+    selected = handle1
+    consume root as slot1
+      provide item as slot0
+      provide action as slot2
+      provide annotation as slot3
+      provide postamble as slot4
+      provide preamble as slot5
+  ItemMultiplexer as particle2
+    hostedParticle = handle6
+    list <- handle3
+    consume item as slot6
+  PlaidTransactionFilter as particle3
+    account <- handle1
+    accountTransactions = handle3
+    transactions <- handle4
+  SelectableList as particle4
+    items = handle3
+    selected = handle5
+    consume root as slot1
+      provide item as slot6
+      provide action as slot7
+      provide annotation as slot8
+      provide postamble as slot9
+      provide preamble as slot10
+  description `user composed recipe (so meta)`

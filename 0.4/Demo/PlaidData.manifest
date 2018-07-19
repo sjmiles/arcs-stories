@@ -6,8 +6,7 @@
 // subject to an additional IP rights grant found at
 // http://polymer.github.io/PATENTS.txt
 
-import 'data/TVShow.schema'
+import '../PlaidAccounts/PlaidAccounts.schema'
 
-particle TVShowActionBar in 'source/TVShowActionBar.js'
-  inout TVShow show
-  consume action
+store PlaidAccounts of [PlaidAccount] #items #accounts in 'accounts.json'
+store PlaidTransactions of [PlaidTransaction] #transactions in 'transactions.json'

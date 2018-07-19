@@ -6,8 +6,27 @@
 // subject to an additional IP rights grant found at
 // http://polymer.github.io/PATENTS.txt
 
-import 'PlaidData.recipe'
+import 'PlaidAccounts.schema'
 
-import 'PlaidAccountItem.recipe'
-import 'PlaidTransactionItem.recipe'
-import 'PlaidTransactionFilter.recipe'
+particle PlaidAccountItem in 'source/PlaidAccountItem.js'
+  in PlaidAccount account
+  consume item
+
+particle PlaidTransactionItem in 'source/PlaidTransactionItem.js'
+  in PlaidTransaction transaction
+  consume item
+
+particle PlaidTransactionFilter in 'source/PlaidTransactionFilter.js'
+  in PlaidAccount account
+  in [PlaidTransaction] transactions
+  inout [PlaidTransaction] accountTransactions
+  description `Transactions by Account`
+
+recipe PlaidTransacationsByAccount
+  create #xactions #items as accountTransactions
+  use #selected as account
+  map as transactions
+  PlaidTransactionFilter
+    account = account
+    transactions = transactions
+    accountTransactions = accountTransactions

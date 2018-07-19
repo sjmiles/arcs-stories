@@ -1,4 +1,4 @@
-import 'Generic/Generic.recipes'
+import 'Demo/Demo.manifest'
 import 'TV/TV.recipes'
 import 'PlaidAccounts/PlaidAccounts.recipes'
 import 'GitHubDash/GitHubDash.recipes'

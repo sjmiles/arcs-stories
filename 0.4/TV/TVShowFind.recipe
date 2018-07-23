@@ -17,7 +17,7 @@ import './data/TVShow.schema'
 
 particle FindTVShows in './source/TVShowFind.js'
   inout [TVShow] shows
-  consume root
+  consume root #content
     provide tiles
   description `find tv shows`
 

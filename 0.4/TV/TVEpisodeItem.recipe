@@ -6,8 +6,6 @@
 // subject to an additional IP rights grant found at
 // http://polymer.github.io/PATENTS.txt
 
-import 'https://$shell/artifacts/Common/List.manifest'
-
 import './data/TVEpisode.schema'
 
 particle TVEpisodeItem in 'source/TVEpisodeItem.js'

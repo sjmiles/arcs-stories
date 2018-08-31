@@ -11,5 +11,4 @@ import './data/TVShow.schema'
 particle TVShowTile in './source/TVShowTile.js'
   in TVShow show
   consume tile
-    provide set of action
 

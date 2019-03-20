@@ -7,7 +7,7 @@
 # http://polymer.github.io/PATENTS.txt
 
 import 'Point.schema'
-view Points of [Point] #points in 'points.json'
+store Points of [Point] #points in 'points.json'
 
 import 'Chart2d.manifest'
 recipe

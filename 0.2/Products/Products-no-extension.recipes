@@ -5,13 +5,13 @@
 # subject to an additional IP rights grant found at
 # http://polymer.github.io/PATENTS.txt
 
-view Wishlist of [Product] in 'data/wishlist.json'
+store Wishlist of [Product] in 'data/wishlist.json'
   description `Claire's wishlist`
 
-view PageProducts of [Product] in 'data/products.json'
+store PageProducts of [Product] in 'data/products.json'
   description `Products from your browsing context`
 
-view Somebody of Person in 'data/people.json'
+store Somebody of Person in 'data/people.json'
 
 import 'https://$cdn/artifacts/Products/ShowProducts.manifest'
 import 'https://$cdn/artifacts/Products/Chooser.manifest'

@@ -13,4 +13,4 @@ particle AccountsMasterDetail in 'https://$cdn/artifacts/Common/source/MasterDet
   consume root
     provide master
     provide detail
-      view selected
+      handle selected

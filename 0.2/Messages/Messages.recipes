@@ -11,7 +11,7 @@ import 'ShowChatMessages.manifest'
 import 'ComposeMessage.manifest'
 
 # bootstrap chat view
-#view Messages of [Message] #chat in 'chat.json'
+#store Messages of [Message] #chat in 'chat.json'
 
 recipe
   create #chat as messages

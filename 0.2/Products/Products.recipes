@@ -5,8 +5,8 @@
 # subject to an additional IP rights grant found at
 # http://polymer.github.io/PATENTS.txt
 
-view DefaultProducts of [Product] #shortlist in 'data/empty.json'
-view Somebody of Person in 'data/people.json'
+store DefaultProducts of [Product] #shortlist in 'data/empty.json'
+store Somebody of Person in 'data/people.json'
 
 import 'https://$cdn/artifacts/Products/GiftList.manifest'
 import 'https://$cdn/artifacts/Products/Arrivinator.manifest'

@@ -13,4 +13,4 @@ particle PlaidAccountsMasterDetail in 'https://$cdn/artifacts/Things/source/Mast
   consume root
     provide master
     provide detail
-      view selected
+      handle selected

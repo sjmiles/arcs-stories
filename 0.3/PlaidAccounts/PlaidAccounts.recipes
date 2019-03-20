@@ -6,10 +6,10 @@
 // http://polymer.github.io/PATENTS.txt
 
 import 'data/PlaidAccount.schema'
-view PlaidAccounts of [PlaidAccount] in 'data/accounts.json'
+store PlaidAccounts of [PlaidAccount] in 'data/accounts.json'
 
 import 'data/PlaidTransaction.schema'
-view PlaidTransactions of [PlaidTransaction] in 'data/transactions.json'
+store PlaidTransactions of [PlaidTransaction] in 'data/transactions.json'
 
 import 'https://$cdn/artifacts/Common/List.manifest'
 import 'https://$cdn/artifacts/Common/Detail.manifest'

@@ -6,7 +6,7 @@
 //http://polymer.github.io/PATENTS.txt
 
 import 'Account.schema'
-view Accounts of [Account] in 'accounts.json'
+store Accounts of [Account] in 'accounts.json'
 
 import 'AccountsMasterDetail.manifest'
 import 'AccountsList.manifest'
